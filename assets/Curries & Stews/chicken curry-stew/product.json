@@ -1,0 +1,25 @@
+{
+  "Product name": "chicken curry ",
+  "Price": 0,
+  "Product Type": "non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "curry",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type a short description",
+  "Long Description": "Many people find chicken curry to be incredibly tasty and flavorful. It's a dish that combines a rich blend of spices, aromatic herbs, tender chicken, and a creamy sauce, making it a favorite in many cuisines around the world. However, taste is subjective, and whether you find chicken curry tasty or not can depend on your personal preferences and the specific recipe or variations used.",
+  "Local Delicacies": false
+}

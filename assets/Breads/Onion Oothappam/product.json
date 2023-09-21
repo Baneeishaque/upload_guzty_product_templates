@@ -1,0 +1,19 @@
+{
+  "Product name": "Onion oothappam",
+  "Price": 20,
+  "Product Type": "Non-Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short Description",
+  "Long Description": "Onion oothappam is a popular South Indian dish that is a variation of the traditional dosa. It is made using a batter of fermented rice and urad dal with the addition of chopped onions and other ingredients.",
+  "Local Delicacies": false
+}

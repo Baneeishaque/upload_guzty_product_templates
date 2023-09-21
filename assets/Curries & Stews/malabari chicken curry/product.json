@@ -1,0 +1,26 @@
+{
+  "Product name": "Malabari chicken curry",
+  "Price": 10,
+  "Product Type": " Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Malabari chicken curry is considered highly tasty and flavorful, especially by those who enjoy the rich and aromatic flavors of South Indian cuisine, particularly Kerala cuisine. ",
+  "Local Delicacies": false
+}

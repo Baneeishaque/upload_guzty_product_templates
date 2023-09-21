@@ -1,0 +1,19 @@
+{
+  "Product name": "Mixed vegetable oothappam",
+  "Price": 20,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short Description",
+  "Long Description": "Mixed vegetable oothappam is a delightful South Indian dish that incorporates a variety of chopped vegetables into the traditional oothappam batter. It's a healthy and flavorful way to enjoy a range of vegetables.",
+  "Local Delicacies": false
+}

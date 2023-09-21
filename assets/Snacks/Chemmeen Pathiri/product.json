@@ -1,0 +1,19 @@
+{
+  "Product name": "chemeen pathiri",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Chemeen Pathiri is indeed considered quite tasty by those who enjoy the flavors of South Indian cuisine and seafood. The combination of the savory prawn filling with the soft and slightly crispy rice flour dough creates a unique and delightful taste experience. ",
+  "Local Delicacies": false
+}

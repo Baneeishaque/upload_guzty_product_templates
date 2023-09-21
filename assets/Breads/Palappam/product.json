@@ -1,0 +1,19 @@
+{
+  "Product name": "Palappam",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "Palappam is loved for its unique texture, slightly sweet and tangy flavor from the fermentation process, and the subtle coconut undertones. It's a versatile dish that can be enjoyed for breakfast, lunch, or dinner.",
+  "Local Delicacies": false
+}

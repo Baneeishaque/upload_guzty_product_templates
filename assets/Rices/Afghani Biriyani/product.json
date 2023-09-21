@@ -1,0 +1,25 @@
+{
+  "Product name":"Afghani Biriyani",
+  "Price": 0,
+  "Product Type":"Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category":"Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description":"Type short Description",
+  "Long Description":"Afghani Biryani is indeed considered to be a delicious and flavorful dish. Its unique combination of spices, marinated meat, aromatic rice, and the addition of nuts and dried fruits creates a harmonious blend of sweet and savory flavors. Many people find the contrast between the savory meat and the sweetness of the dried fruits to be quite appealing.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,25 @@
+{
+  "Product name": "Kashmiri pulav ",
+  "Price": 0,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 60},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "Type a description",
+  "Local Delicacies": false
+}

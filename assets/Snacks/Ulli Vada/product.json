@@ -1,0 +1,19 @@
+{
+  "Product name": "Uli vada",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Ulli Vada, or Onion Vada, is generally considered tasty by those who enjoy South Indian snacks. These deep-fried fritters have a satisfying crunch on the outside and a flavorful, savory interior due to the combination of chana dal, onions, green chilies, and spices.",
+  "Local Delicacies": false
+}

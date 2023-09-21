@@ -1,0 +1,19 @@
+{
+  "Product name": "Puttu",
+  "Price": 35,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 20,
+  "Short Description": "",
+  "Long Description": "Kerala Puttu is created by mixing rice flour with grated coconut, resulting in a texture that is uniquely soft with a subtle crumble.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,22 @@
+{
+  "Product name": "Vegetable Sandwitch",
+  "Price": 25,
+  "Product Type": "veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Sandwitches",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}
+
+
+

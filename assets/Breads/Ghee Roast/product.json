@@ -1,0 +1,19 @@
+{
+  "Product name": "Ghee Roast",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "It is a fiery and flavorful dish known for its rich, spicy, and tangy taste. The key ingredient in ghee roast is ghee, which is clarified butter.",
+  "Local Delicacies": false
+}

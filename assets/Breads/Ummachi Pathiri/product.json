@@ -1,0 +1,20 @@
+{
+  "Product name": "Ummachi Pathiri",
+  "Price": 15,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Long Description": "A popular traditional dish from the Malabar region of Kerala, India. It is a special type of pathiri, which is a thin, round, unleavened flatbread made from rice flour. Ummachi Pathiri is unique because it incorporates a sweet filling",
+  "Local Delicacies": false,
+  "Short Description": "Type short decription"
+  
+}

@@ -1,0 +1,19 @@
+{
+  "Product name": "Pakka vada",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Pakkavada is a traditional snack item of South India. We get pakkavada almost all street shops and bakeries. Pakkavada is made with besan and onion. In Kerala it is also known as ullivada. ",
+  "Local Delicacies": false
+}

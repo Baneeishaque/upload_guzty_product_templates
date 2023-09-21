@@ -1,0 +1,20 @@
+{
+  "Product name": "Veg Noodles",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Noodles",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Short Description": "Type short Description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}
+

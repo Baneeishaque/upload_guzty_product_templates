@@ -1,0 +1,26 @@
+{
+  "Product name": "chily chicken curry ",
+  "Price": 10,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Chilli Chicken Curry is indeed a tasty and flavorful dish that combines the bold and spicy flavors of Indian and Chinese cuisines.",
+  "Local Delicacies": false
+}

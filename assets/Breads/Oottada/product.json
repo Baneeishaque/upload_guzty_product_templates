@@ -1,0 +1,19 @@
+{
+    "Product name": "Oottada",
+    "Price": 10,
+  "Product Type": "Veg",
+    "Sku set": "Pieces",
+    "GST": 5,
+    "Min count": 3,
+    "Max count": 20,
+    "Product Category": "Bread",
+    "Order type": [
+      "Take away",
+      "Delivery",
+      "Dine-in"
+    ],
+    "Lead time": 25,
+    "Short Description": "Type short description",
+    "Long Description": "Ottada is one of the breakfast menu in Kerala; specially in Malabar region. It has full of holes in its surface and hence the name Ottada. Every one loves to eat this by dipping in the sweetened coconut milk.",
+    "Local Delicacies": false
+  }

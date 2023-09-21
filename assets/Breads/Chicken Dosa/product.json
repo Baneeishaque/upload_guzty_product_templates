@@ -1,0 +1,19 @@
+{
+  "Product name": "Chicken Dosa",
+  "Price": 40,
+  "Product Type": "Non-Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "Chicken Dosa is a creative fusion dish that combines the South Indian favorite, dosa, with a flavorful chicken filling. This dish is not part of traditional South Indian cuisine but has gained popularity due to its delicious and unique combination of flavors.",
+  "Local Delicacies": false
+}

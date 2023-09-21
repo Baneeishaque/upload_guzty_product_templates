@@ -1,0 +1,26 @@
+{
+  "Product name": "pineapple",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Uppilitath",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Pineapple is widely regarded as a tasty and delicious fruit by many people around the world. Its sweet and tangy flavor, combined with its tropical aroma, makes it a refreshing and enjoyable fruit to eat both fresh and in various culinary applications. ",
+  "Local Delicacies": false
+}

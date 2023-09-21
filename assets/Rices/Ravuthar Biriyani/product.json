@@ -1,0 +1,25 @@
+{
+  "Product name": "Ravuthar Biryani",
+  "Price": 0,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type of description",
+  "Long Description": "The taste of Ravuthar Biryani, like any other biryani, can be quite delicious and flavorful if prepared well. Biryani dishes are known for their rich and aromatic flavors, which come from a combination of spices, herbs, and the method of slow cooking. The exact taste of Ravuthar Biryani can vary depending on the specific recipe and the preferences of the person preparing it.",
+  "Local Delicacies": true
+}

@@ -1,0 +1,25 @@
+{
+  "Product name": "Ghee Rice",
+  "Price": 0,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 90},
+    {"varient name" : "Full",
+     "varient price" : 180}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "ghee rice is known for its delicious and rich flavor. The use of ghee (clarified butter) imparts a distinct, buttery richness to the rice, which enhances its taste. The combination of these elements results in a flavorful and aromatic rice dish that is well-loved in Indian cuisine.",
+  "Local Delicacies": false
+}

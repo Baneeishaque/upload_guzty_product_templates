@@ -1,0 +1,19 @@
+{
+  "Product name": "Thattu Dosha",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 4,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "Thattu dosa is very soft and is smaller in size than regular dosa, nearly the size of your palm.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,19 @@
+{
+  "Product name": "Uzhunu vada",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Uzhunnu Vada, or Medu Vada, is indeed a tasty and flavorful South Indian snack. These deep-fried lentil doughnuts have a crispy exterior and a soft, fluffy interior, making them a delightful treat.",
+  "Local Delicacies": false
+}

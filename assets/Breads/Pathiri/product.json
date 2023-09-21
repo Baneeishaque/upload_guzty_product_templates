@@ -1,0 +1,19 @@
+{
+  "Product name": "Pathiri",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 5,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short description",
+  "Long Description": "Pathiri is a type of traditional unleavened flatbread. The mild, slightly sweet flavor of the rice pairs well with a variety of curries, making it a versatile dish. The texture, ranging from soft and pliable to thin and slightly crispy, providing a pleasant mouthfeel.",
+  "Local Delicacies": false
+}

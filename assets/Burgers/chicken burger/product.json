@@ -1,0 +1,20 @@
+{
+  "Product name": "Chicken Burger",
+  "Price": 10,
+  "Product Type": "non-veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Burger",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Short Description": "Type short Description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}
+

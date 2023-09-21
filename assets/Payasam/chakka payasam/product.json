@@ -1,0 +1,20 @@
+{
+  "product name":"Chakka Payasam",
+  "Price": 50,
+  "Product Type": "Veg",
+  "Sku set": "Millilitre",
+  "GST": 5,
+  "Min count": 250,
+  "Max count": 2000,
+  "Product Category": "Payasam",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 60,
+ 
+  "Short Description": "Type short description",
+  "Long Description": "Type long description",
+  "Local Delicacies": false
+}

@@ -1,0 +1,20 @@
+{
+  "product name":"Cinnamon Tea",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "Portion",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Hot Bevarages",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 10,
+ 
+  "Short Description": "Type short description",
+  "Long Description": "Type long description",
+  "Local Delicacies": false
+}

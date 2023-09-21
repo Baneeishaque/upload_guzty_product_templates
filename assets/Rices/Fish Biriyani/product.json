@@ -1,0 +1,25 @@
+{
+  "Product name":"Fish Biriyani",
+  "Price": 0,
+  "Product Type":"Non-Veg",
+  "Sku set":"Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category":"Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description":"Type a short description",
+  "Long Description":"Fish Biryani is indeed a tasty and flavorful dish that's highly regarded for its unique combination of tender fish, aromatic spices, and fragrant rice. The mild and delicate taste of the fish pairs wonderfully with the spices and herbs used in the dish. ",
+  "Local Delicacies": false
+}

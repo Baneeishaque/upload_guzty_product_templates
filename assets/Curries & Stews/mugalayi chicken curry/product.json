@@ -1,0 +1,26 @@
+{
+  "Product name": "Mugalayi chicken curry",
+  "Price": 10,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Mugalayi chicken curry does not appear to be a recognized or common dish in Indian or international cuisine, I cannot provide specific information about its taste. If you have any other chicken curry or Indian cuisine-related questions or if there's a specific dish you'd like to know more about or request a recipe for, please feel free to provide more details, and I'll be happy to assist you in finding a tasty and flavorful option",
+  "Local Delicacies": false
+}

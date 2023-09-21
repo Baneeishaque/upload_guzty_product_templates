@@ -1,0 +1,19 @@
+{
+  "Product name": "Kearala Poratta",
+  "Price": 15,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 20,
+  "Short Description": "Type short description",
+  "Long Description": "Kerala Poratta It is made from a dough consisting of all-purpose flour, water, and a bit of oil, which is kneaded, flattened, and then cooked on a griddle. The process of repeatedly folding and rolling the dough gives Kerala Poratta its characteristic flaky, layered texture.",
+  "Local Delicacies": false
+}

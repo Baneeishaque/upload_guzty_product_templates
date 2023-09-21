@@ -1,0 +1,20 @@
+{
+  "product name":"Mutton Kebab",
+   "Price": 250,
+  "Product Type": "Non-veg",
+  "Sku set": "Gram",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Grills & Fries",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 20,
+ 
+  "Short Description": "Type short description",
+  "Long Description": "Type long description",
+  "Local Delicacies": false
+}

@@ -1,0 +1,26 @@
+{
+  "Product name": "Lamb shoulder Masala",
+  "Price": 10,
+  "Product Type": " Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Lamb shoulder masala is indeed a tasty and flavorful dish, especially if you enjoy the rich and aromatic flavors of Indian cuisine. The tender pieces of lamb, marinated and slow-cooked in a spicy masala gravy, create a delicious and satisfying curry.",
+  "Local Delicacies": false
+}

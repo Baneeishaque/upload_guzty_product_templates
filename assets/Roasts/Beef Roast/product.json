@@ -1,0 +1,19 @@
+{
+  "Product name": "Beef Roast",
+  "Price": 10,
+  "Product Type": "non-veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Roast",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}

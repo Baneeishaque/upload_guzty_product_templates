@@ -1,0 +1,26 @@
+{
+  "Product name": "Chicken Varutharachath",
+  "Price": 10,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Chicken Varutharachath is indeed a tasty and flavorful dish. It's known for its rich, aromatic, and mildly spicy preparation with roasted coconut and a blend of aromatic spices. ",
+  "Local Delicacies": false
+}

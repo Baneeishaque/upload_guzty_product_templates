@@ -1,0 +1,19 @@
+{
+  "Product name": "Poricha Pathiri",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Poricha Pathiri is indeed a tasty and flavorful South Indian dish. The combination of the rice-based dough, aromatic coconut filling, and spices creates a delightful blend of flavors. ",
+  "Local Delicacies": false
+}

@@ -1,0 +1,20 @@
+{
+  "product name":"Beef Sandwitch",
+  "Price": 25,
+  "Product Type": "Non-Veg",
+  "Sku set": "pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Sandwitches",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 30,
+ 
+  "Short Description": "Type short description",
+  "Long Description": " A chicken sandwich can be very tasty, but the flavor largely depends on how it's prepared and the ingredients used. When seasoned and cooked well, a grilled chicken breast can be delicious, especially when paired with fresh vegetables, cheese, and condiments.  ",
+  "Local Delicacies": false
+}

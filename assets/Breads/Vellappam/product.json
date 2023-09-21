@@ -1,0 +1,19 @@
+{
+    "Product name": "Vellappam",
+    "Price": 10,
+    "Product Type": "Veg",
+    "Sku set": "Pieces",
+    "GST": 5,
+    "Min count": 3,
+    "Max count": 20,
+    "Product Category": "Bread",
+    "Order type": [
+      "Take away",
+      "Delivery",
+      "Dine-in"
+    ],
+    "Lead time": 25,
+    "Short Description": "Type short description",
+    "Long Description": "vellappam is considered quite tasty and is appreciated for its unique flavor and texture. The combination of the slightly sweet and tangy taste from the fermented rice batter, along with the creaminess of freshly grated coconut, gives vellappam a distinct and delightful flavor profile.",
+    "Local Delicacies": false
+  }

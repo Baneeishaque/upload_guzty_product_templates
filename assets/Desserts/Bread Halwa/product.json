@@ -1,0 +1,19 @@
+{
+  "Product name": "Bread Halwa",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Deserts",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}

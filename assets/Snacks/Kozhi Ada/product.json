@@ -1,0 +1,19 @@
+{
+  "Product name": "Kozhi Ada",
+  "Price": 10,
+  "Product Type": "Non-veg",
+  "Sku set": "portion",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Type Long Description",
+  "Local Delicacies": false
+}

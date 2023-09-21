@@ -1,0 +1,19 @@
+{
+  "Product name": "Avil",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "Gram",
+  "GST": 5,
+  "Min count": 100,
+  "Max count": 2000,
+  "Product Category": "Snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Type Long Description",
+  "Local Delicacies": false
+}

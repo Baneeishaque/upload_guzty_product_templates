@@ -1,0 +1,19 @@
+{
+  "Product name": "Rameshwaram Idili",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 5,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short decription",
+  "Long Description": "Rameshwaram Idili is a popular South Indian dish, known for their fluffy and spongy texture, and they are typically served with various accompaniments.",
+  "Local Delicacies": false
+}

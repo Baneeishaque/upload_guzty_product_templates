@@ -1,0 +1,19 @@
+{
+  "Product name": "Parippu vada",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a description",
+  "Long Description": "Parippu Vada is indeed very tasty for those who enjoy South Indian flavors and deep-fried snacks. These lentil fritters have a crispy exterior and a flavorful, spiced interior, making them a delightful treat.",
+  "Local Delicacies": false
+}

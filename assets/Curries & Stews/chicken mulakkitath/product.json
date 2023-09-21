@@ -1,0 +1,20 @@
+{
+  "Product name": "Chicken mulakittath ",
+  "Price": 10,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  
+  "Short Description": "Type a description",
+  "Long Description": "Chicken Mulakittath is known for its delicious and bold flavors. The combination of spices, coconut milk, and black pepper gives this dish a rich and spicy taste that many people find very appealing. ",
+  "Local Delicacies": false
+}

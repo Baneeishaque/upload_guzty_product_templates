@@ -1,0 +1,19 @@
+{
+  "Product name": "Paneer Oothappam",
+  "Price": 20,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "Paneer oothappam is a delicious variation of the traditional South Indian oothappam that incorporates crumbled paneer into the batter. This adds a rich, creamy texture and a protein boost to the dish",
+  "Local Delicacies": false
+}

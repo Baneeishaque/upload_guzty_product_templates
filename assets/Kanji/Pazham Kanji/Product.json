@@ -1,0 +1,19 @@
+{
+  "Product name": "Pazham Kanji",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "portion",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Kanji",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Type long Description",
+  "Local Delicacies": false
+}

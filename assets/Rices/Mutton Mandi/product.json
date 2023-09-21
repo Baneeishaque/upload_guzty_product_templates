@@ -1,0 +1,25 @@
+{
+  "Product name": "Mutton Mandi",
+  "Price": 0,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 90},
+    {"varient name" : "Full",
+     "varient price" : 180}
+  ],
+  "Short Description": "Type a description ",
+  "Long Description": "Mutton Mandi is indeed considered a tasty and flavorful dish. It shares the aromatic spices and fragrant rice characteristic of Mandi dishes, and the tender mutton brings a rich and savory element to the dish.",
+  "Local Delicacies": false
+}

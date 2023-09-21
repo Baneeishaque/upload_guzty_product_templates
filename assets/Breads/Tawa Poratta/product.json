@@ -1,0 +1,19 @@
+{
+  "Product name": "Tawa poratta",
+  "Price": 40,
+  "Product Type": "Non-Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type short description",
+  "Long Description": "Tawa Parotta is best served hot with a side of your favorite curry, whether it's vegetable curry, chicken curry, or mutton curry. The flaky and layered texture of the parotta makes it a delightful accompaniment to a variety of Indian dishes.",
+  "Local Delicacies": false
+}

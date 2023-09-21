@@ -1,0 +1,25 @@
+{
+  "Product name": "Kabsa",
+  "Price": 0,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 90},
+    {"varient name" : "Full",
+     "varient price" : 180}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "Kabsa is known for its delicious and flavorful taste. Its complex blend of aromatic spices, tender meat, and fragrant rice creates a rich and satisfying flavor profile. The combination of spices like cinnamon, cloves, cardamom, and others adds depth and character to the dish.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,29 @@
+{
+  "Product name":"Beef Biriyani",
+  "Price": 0,
+  "Product Type":"Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category":"Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 180,
+  "Varients": [
+    {
+      "varient name": "Half",
+      "varient price": 120
+    },
+    {
+      "varient name": "Full",
+      "varient price": 180
+    }
+  ],
+  "Short Description": "Type a short description",
+  "Long Description":"Beef Biryani is a flavorful dish made by combining marinated pieces of beef with fragrant basmati rice and a blend of spices. The slow-cooking process allows the beef to become tender and absorb the rich flavors of the spices",
+  "Local Delicacies": false
+}

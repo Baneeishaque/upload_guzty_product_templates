@@ -1,0 +1,26 @@
+{
+  "Product name": "Mixed Vegetable curry",
+  "Price": 10,
+  "Product Type": " Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "Mixed vegetable curry is a versatile and wholesome dish made with a variety of vegetables cooked in a flavorful gravy.",
+  "Local Delicacies": false
+}

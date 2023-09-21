@@ -1,0 +1,19 @@
+{
+  "Product name": "Plain Noodles",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Noodles",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Short Description": "Type a short description",
+  "Long Description": "The taste of plain noodles can be enjoyable for many people, but it's relatively simple and mild compared to noodle dishes with more complex sauces and seasonings. Whether plain noodles are considered tasty or not depends on personal preferences and expectations.",
+  "Local Delicacies": false
+}

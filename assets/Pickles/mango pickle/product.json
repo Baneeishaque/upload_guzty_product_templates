@@ -1,0 +1,20 @@
+{
+  "product name":"Mango Pickle",
+  "Price": 100,
+  "Product Type": "veg",
+  "Sku set": "Kilogram",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Pickles",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 30,
+ 
+  "Short Description": "Type short description",
+  "Long Description": "Type short description",
+  "Local Delicacies": false
+}

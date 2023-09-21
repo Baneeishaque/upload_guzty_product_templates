@@ -1,0 +1,20 @@
+{
+  "Product name": "Naan",
+  "Price": 18,
+  "Product Type": "Non-Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Long Description": "Naan is typically made from a dough of all-purpose flour, yogurt, water, and a leavening agent like yeast or baking powder. It is traditionally cooked in a tandoor, which is a clay oven, but it can also be prepared on a stovetop or in a regular oven.",
+  "Local Delicacies": false,
+  "Short Description": "Type short decription"
+  
+}

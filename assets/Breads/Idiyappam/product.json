@@ -1,0 +1,19 @@
+{
+  "Product name": "Idiyappam",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 5,
+  "Max count": 20,
+  "Product Category": "Bread",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type hort description",
+  "Long Description": "Idiyappam has a delicate, slightly nutty flavor from the rice flour, and its soft, fluffy texture makes it a versatile dish. It's commonly enjoyed for breakfast or dinner and can be served with both savory and sweet accompaniments.",
+  "Local Delicacies": false
+}

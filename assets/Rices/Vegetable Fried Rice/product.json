@@ -1,0 +1,25 @@
+{
+  "Product name": "Vegetable Fried Rice",
+  "Price": 0,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 70},
+    {"varient name" : "Full",
+     "varient price" : 140}
+  ],
+  "Short Description": "Type a Description",
+  "Long Description": "Vegetable Fried Rice is generally considered a tasty and flavorful dish. Its appeal lies in the combination of tender-crisp vegetables, aromatic seasonings like garlic and ginger, and the savory umami flavor from soy sauce. The nutty aroma of sesame oil can also add depth to the dish.",
+  "Local Delicacies": false
+}

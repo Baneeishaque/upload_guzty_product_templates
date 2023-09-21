@@ -1,0 +1,19 @@
+{
+  "Product name": "Areerappam",
+  "Price": 10,
+  "Product Type": "veg",
+  "Sku set": "Pieces",
+  "GST": 5,
+  "Min count": 3,
+  "Max count": 20,
+  "Product Category": "Snacks",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 15,
+  "Short Description": "Type short Description",
+  "Long Description": "Areerappam is a traditional Malabar tea snack. It's tasty and delicious.",
+  "Local Delicacies": false
+}

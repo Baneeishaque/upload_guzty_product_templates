@@ -1,0 +1,25 @@
+{
+  "Product name": "chicken pizza ",
+  "Price": 0,
+  "Product Type": "non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "pizza",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "The taste of chicken pizza can be quite delicious, but its flavor largely depends on various factors such as the quality of ingredients used, the seasoning, and personal preferences. Here are some aspects that can influence the taste",
+  "Local Delicacies": false
+}
