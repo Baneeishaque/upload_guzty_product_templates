@@ -47,6 +47,8 @@ public class Main {
                 for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
 
                     String filePath = fileEntry.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
+                    System.out.println("filePath = " + filePath);
+
                     if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
 
                         if (filePath.contains(".json")) {
