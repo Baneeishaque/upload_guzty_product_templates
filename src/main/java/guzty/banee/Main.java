@@ -43,7 +43,8 @@ public class Main {
 //                System.out.println("document = " + document.getData());
 
                 Map<String, Object> data = document.getData();
-                for (final File fileEntry : Objects.requireNonNull((new File("~/upload_guzty_product_templates/assets")).listFiles())) {
+                File folder = new File("~/upload_guzty_product_templates/assets");
+                for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
 
                     String filePath = fileEntry.getPath().replaceFirst("~/upload_guzty_product_templates/assets/", "");
                     if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
