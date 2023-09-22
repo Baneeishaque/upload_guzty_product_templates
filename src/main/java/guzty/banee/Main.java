@@ -85,16 +85,16 @@ public class Main {
                                         System.out.println("Upload : " + fileName);
 
                                         LocalDateTime localDateTime = LocalDateTime.now();
-                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + FilenameUtils.getExtension(fileEntry4.getPath());
+                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + "." + FilenameUtils.getExtension(fileEntry4.getPath());
 
                                         BlobId blobId = BlobId.of("guzty-c2dc5.appspot.com", blobString);
                                         try {
                                             BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
-                                                    .setMetadata(Map.ofEntries(Map.entry("customMetadata", "{'picked-file-path': " + fileName + "}")))
+                                                    .setMetadata(Map.ofEntries(Map.entry("picked-file-path", fileName)))
                                                     .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
                                                     .build();
                                             Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
-                                            System.out.println("blob = " + blob.getMediaLink());
+                                            System.out.println("image = " + blob.getMediaLink());
 
 //                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 //
