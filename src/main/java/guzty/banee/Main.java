@@ -1,5 +1,6 @@
 package guzty.banee;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Filter;
@@ -14,12 +15,15 @@ import net.sf.jmimemagic.Magic;
 import net.sf.jmimemagic.MagicException;
 import net.sf.jmimemagic.MagicMatchNotFoundException;
 import net.sf.jmimemagic.MagicParseException;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -53,6 +57,7 @@ public class Main {
             } catch (InterruptedException | ExecutionException e) {
                 throw new RuntimeException(e);
             }
+            List<String> images = new ArrayList<>();
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 //                System.out.println("document = " + document.getData());
@@ -75,7 +80,14 @@ public class Main {
                                 if (filePath.contains(".json")) {
 
                                     System.out.println("Write : " + filePath);
+
+                                    ObjectMapper mapper = new ObjectMapper();
+                                    ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
+                                    System.out.println("productJsonModal = " + productJsonModal);
+
                                     System.exit(0);
+
+                                    images.clear();
 
                                 } else {
 
@@ -94,7 +106,8 @@ public class Main {
                                                     .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
                                                     .build();
                                             Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
-                                            System.out.println("image = " + blob.getMediaLink());
+//                                            System.out.println("image = " + blob.getMediaLink());
+                                            images.add(blob.getMediaLink());
 
 //                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 //
