@@ -78,7 +78,7 @@ public class Main {
                                         try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
                                             LocalDateTime localDateTime = LocalDateTime.now();
                                             String blobString = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateTime) + "/" + DateTimeFormatter.ofPattern("HH:mm:ss").format(localDateTime);
-                                            StorageClient.getInstance().bucket("guzty-c2dc5.appspot.com").create(blobString, image, Bucket.BlobWriteOption.doesNotExist());
+                                            StorageClient.getInstance().bucket("guzty-c2dc5.appspot.com").create(blobString, image, "image/jpeg", Bucket.BlobWriteOption.doesNotExist());
                                         }
                                         System.exit(0);
                                     }
