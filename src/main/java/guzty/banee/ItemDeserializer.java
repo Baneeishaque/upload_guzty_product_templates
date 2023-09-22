@@ -28,23 +28,43 @@ public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
 
 //        ObjectMapper mapper = new ObjectMapper();
 //        String[] orderType = mapper.readValue(node.get("Order type").asText(),String[].class);
-        System.out.println("node = " +node.get("Order type").asText());
+//        System.out.println("node = " +node.get("Order type").asText());
+
+        List<String> orderTypeList = new ArrayList<>();
+        JsonNode orderTypesNode = node.get("Order type");
+        if (orderTypesNode.isArray()) {
+
+            for (JsonNode orderType :
+                    orderTypesNode) {
+
+                orderTypeList.add(orderType.asText());
+            }
+        }
 
         int leadTime = node.get("Lead time").asInt();
+
         List<Map<String, Object>> varients = new ArrayList<>();
         if (node.get("Varients") != null) {
-            Map<String, Object> varient = new HashMap<>();
-            String varientName = node.get("varient name").asText();
-            varient.put("varientName", varientName);
-            varient.put("price", node.get("varient price").asText());
-            varient.put("varientId", getVarientId(varientName));
-            varients.add(varient);
+
+            JsonNode varientsNode = node.get("Varients");
+            if (varientsNode.isArray()) {
+
+                for (JsonNode varientNode : varientsNode) {
+
+                    Map<String, Object> varient = new HashMap<>();
+                    String varientName = varientNode.get("varient name").asText();
+                    varient.put("varientName", varientName);
+                    varient.put("price", varientNode.get("varient price").asText());
+                    varient.put("varientId", getVarientId(varientName));
+                    varients.add(varient);
+                }
+            }
         }
         String shortDescription = node.get("Short Description").asText();
         String longDescription = node.get("Long Description").asText();
         boolean localDelicacies = node.get("Local Delicacies").asBoolean();
 
-        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, new String[]{}, leadTime, varients, shortDescription, longDescription, localDelicacies);
+        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, orderTypeList.toArray(new String[orderTypeList.size()]), leadTime, varients, shortDescription, longDescription, localDelicacies);
     }
 
     String getVarientId(String varientName) {
