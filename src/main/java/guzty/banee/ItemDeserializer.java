@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,8 +26,9 @@ public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
         int maximumCount = node.get("Max count").asInt();
         String productCategory = node.get("Product Category").asText();
 
-        ObjectMapper mapper = new ObjectMapper();
-        String[] orderType = mapper.readValue(node.get("Order type").asText(),String[].class);
+//        ObjectMapper mapper = new ObjectMapper();
+//        String[] orderType = mapper.readValue(node.get("Order type").asText(),String[].class);
+        System.out.println("node = " +node.get("Order type").asText());
 
         int leadTime = node.get("Lead time").asInt();
         List<Map<String, Object>> varients = new ArrayList<>();
@@ -44,7 +44,7 @@ public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
         String longDescription = node.get("Long Description").asText();
         boolean localDelicacies = node.get("Local Delicacies").asBoolean();
 
-        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, orderType, leadTime, varients, shortDescription, longDescription, localDelicacies);
+        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, new String[]{}, leadTime, varients, shortDescription, longDescription, localDelicacies);
     }
 
     String getVarientId(String varientName) {
