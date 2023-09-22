@@ -40,9 +40,11 @@ public class Main {
             }
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
-                System.out.println("document = " + document.getData());
+//                System.out.println("document = " + document.getData());
 
                 Map<String, Object> data = document.getData();
+                String categoryName = data.get("name").toString();
+                System.out.println("Category Name = " + categoryName);
                 File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets");
                 for (final File fileEntry : Objects.requireNonNull(rootFolder.listFiles())) {
 
@@ -53,7 +55,7 @@ public class Main {
                             String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
 //                            System.out.println("filePath = " + filePath);
 
-                            if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
+                            if (Objects.equals(categoryName, filePath.substring(0, filePath.indexOf("/")))) {
 
                                 if (filePath.contains(".json")) {
 
