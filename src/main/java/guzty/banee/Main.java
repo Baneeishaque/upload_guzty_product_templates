@@ -40,7 +40,7 @@ public class Main {
             }
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
-//                System.out.println("document = " + document.getData());
+                System.out.println("document = " + document.getData());
 
                 Map<String, Object> data = document.getData();
                 File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets");
@@ -58,6 +58,7 @@ public class Main {
                                 if (filePath.contains(".json")) {
 
                                     System.out.println("Write : " + filePath);
+                                    System.exit(0);
 
                                 } else {
 
