@@ -83,26 +83,8 @@ public class Main {
                                         String id = "GZDP" + settingsDocument.get("demoProductId");
                                         System.out.println("id = " + id);
 
-                                        ProductModel productModal = new ProductModel(
-                                                LocalDateTime.now(), false, true,
-                                                productJsonModal.getProductName().trim(), images,
-                                                productJsonModal.getShortDescription(),
-                                                productJsonModal.getLongDescription(),
-                                                productJsonModal.getPrice(),
-                                                productJsonModal.getLeadTime(),
-                                                productJsonModal.getSkuSet(), 0, "", "", "", true, true,
-                                                data.get("id").toString(), categoryName, 0, 0, 0, 0, 0,
-                                                productJsonModal.getProductType().equals("Veg"),
-                                                new HashMap<>(), true, productJsonModal.getOrderType(),
-                                                productJsonModal.getOrderType(), productJsonModal.getMaxCount(),
-                                                productJsonModal.getMinCount(), productJsonModal.getGst(),
-                                                new ArrayList<>() {
-                                                }, new ArrayList<>(), 0, 0,
-                                                productJsonModal.getLocalDelicacies(), false,
-                                                productJsonModal.getVarients(), settingsDocument.getId(),
-                                                settingsDocument.getReference(),
-                                                getProductTypeId(productJsonModal.getProductType(), filePath)
-                                        );
+                                        ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
+                                        }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), settingsDocument.getId(), settingsDocument.getReference(), getProductTypeId(productJsonModal.getProductType(), filePath));
 //                                                search: setSearchParam(productJson.productName.trim()),
 
                                     } catch (ExecutionException | InterruptedException e) {

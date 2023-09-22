@@ -95,4 +95,51 @@ public class ProductModel {
         this.reference = reference;
         this.productTypeId = productTypeId;
     }
+
+    @Override
+    public String toString() {
+        return "ProductModel{" +
+                "createdTime=" + createdTime +
+                ", deleted=" + deleted +
+                ", available=" + available +
+                ", name='" + name + '\'' +
+                ", imageUrls=" + imageUrls +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", longDescription='" + longDescription + '\'' +
+                ", price=" + price +
+                ", leadingTime=" + leadingTime +
+                ", skuSet='" + skuSet + '\'' +
+                ", specialOffer=" + specialOffer +
+                ", productId='" + productId + '\'' +
+                ", vendorId='" + vendorId + '\'' +
+                ", vendorName='" + vendorName + '\'' +
+                ", mbuVerified=" + mbuVerified +
+                ", mbuAvailable=" + mbuAvailable +
+                ", categoryId='" + categoryId + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", oneRating=" + oneRating +
+                ", twoRating=" + twoRating +
+                ", threeRating=" + threeRating +
+                ", fourRating=" + fourRating +
+                ", fiveRating=" + fiveRating +
+                ", veg=" + veg +
+                ", position=" + position +
+                ", verified=" + verified +
+                ", ordersType=" + ordersType +
+                ", selectedOrdersType=" + selectedOrdersType +
+                ", maxOrder=" + maxOrder +
+                ", minOrder=" + minOrder +
+                ", gst=" + gst +
+                ", search=" + search +
+                ", keywords=" + keywords +
+                ", lat=" + lat +
+                ", longitude=" + longitude +
+                ", localDelicacies=" + localDelicacies +
+                ", instaKitchen=" + instaKitchen +
+                ", variants=" + variants +
+                ", demoProductId='" + demoProductId + '\'' +
+                ", reference=" + reference +
+                ", productTypeId='" + productTypeId + '\'' +
+                '}';
+    }
 }
