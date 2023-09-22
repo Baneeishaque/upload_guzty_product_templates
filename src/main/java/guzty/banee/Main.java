@@ -43,21 +43,30 @@ public class Main {
 //                System.out.println("document = " + document.getData());
 
                 Map<String, Object> data = document.getData();
-                File folder = new File("/home/guzty_tech/upload_guzty_product_templates/assets");
-                for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
+                File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets");
+                for (final File fileEntry : Objects.requireNonNull(rootFolder.listFiles())) {
 
-                    String filePath = fileEntry.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
-                    System.out.println("filePath = " + filePath);
+                    for (final File fileEntry2 : Objects.requireNonNull(fileEntry.listFiles())) {
 
-                    if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
+                        for (final File fileEntry3 : Objects.requireNonNull(fileEntry2.listFiles())) {
 
-                        if (filePath.contains(".json")) {
+                            String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
+                            System.out.println("filePath = " + filePath);
 
-                            System.out.println("Write : " + filePath);
+                            if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
 
-                        } else {
+                                if (filePath.contains(".json")) {
 
-                            System.out.println("Upload : " + filePath);
+                                    System.out.println("Write : " + filePath);
+
+                                } else {
+
+                                    for (final File fileEntry4 : Objects.requireNonNull(fileEntry3.listFiles())) {
+
+                                        System.out.println("Upload : " + fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", ""));
+                                    }
+                                }
+                            }
                         }
                     }
                 }
