@@ -100,7 +100,7 @@ public class Main {
 
                                             try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 
-                                                Blob blob = storageClient.bucket().create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
+                                                Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
                                                 System.out.println("image link = " + blob.signUrl(7300, TimeUnit.DAYS));
                                             }
 
