@@ -3,10 +3,7 @@ package guzty.banee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Filter;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.google.firebase.FirebaseApp;
@@ -17,11 +14,9 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class Main {
@@ -80,7 +75,41 @@ public class Main {
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
                                     System.out.println("productJsonModal = " + productJsonModal);
 
-//                                    System.exit(0);
+                                    ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
+                                    DocumentSnapshot settingsDocument;
+                                    try {
+
+                                        settingsDocument = querySnapshotApiFuture.get();
+                                        String id = "GZDP" + settingsDocument.get("demoProductId");
+                                        System.out.println("id = " + id);
+
+                                        ProductModel productModal = new ProductModel(
+                                                LocalDateTime.now(), false, true,
+                                                productJsonModal.getProductName().trim(), images,
+                                                productJsonModal.getShortDescription(),
+                                                productJsonModal.getLongDescription(),
+                                                productJsonModal.getPrice(),
+                                                productJsonModal.getLeadTime(),
+                                                productJsonModal.getSkuSet(), 0, "", "", "", true, true,
+                                                data.get("id").toString(), categoryName, 0, 0, 0, 0, 0,
+                                                productJsonModal.getProductType().equals("Veg"),
+                                                new HashMap<>(), true, productJsonModal.getOrderType(),
+                                                productJsonModal.getOrderType(), productJsonModal.getMaxCount(),
+                                                productJsonModal.getMinCount(), productJsonModal.getGst(),
+                                                new ArrayList<>() {
+                                                }, new ArrayList<>(), 0, 0,
+                                                productJsonModal.getLocalDelicacies(), false,
+                                                productJsonModal.getVarients(), settingsDocument.getId(),
+                                                settingsDocument.getReference(),
+                                                getProductTypeId(productJsonModal.getProductType(), filePath)
+                                        );
+//                                                search: setSearchParam(productJson.productName.trim()),
+
+                                    } catch (ExecutionException | InterruptedException e) {
+                                        throw new RuntimeException(e);
+                                    }
+
+                                    System.exit(0);
 
 //                                    images.clear();
 
@@ -122,6 +151,21 @@ public class Main {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    static String getProductTypeId(String productType, String filePath) {
+        switch (productType.toLowerCase().replaceAll(" ", "")) {
+            case "non-veg":
+                return "PDT1001";
+            case "veg":
+                return "PDT1002";
+            case "diary":
+                return "PDT1003";
+            default: {
+                System.out.println("Product Type Not Exist for $productType in $filePath");
+                return "";
+            }
         }
     }
 }

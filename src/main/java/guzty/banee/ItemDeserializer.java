@@ -64,7 +64,7 @@ public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
         String longDescription = node.get("Long Description").asText();
         boolean localDelicacies = node.get("Local Delicacies").asBoolean();
 
-        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, orderTypeList.toArray(new String[orderTypeList.size()]), leadTime, varients, shortDescription, longDescription, localDelicacies);
+        return new ProductJsonModal(productName, price, productType, skuSet, gst, minimumCount, maximumCount, productCategory, orderTypeList, leadTime, varients, shortDescription, longDescription, localDelicacies);
     }
 
     String getVarientId(String varientName) {

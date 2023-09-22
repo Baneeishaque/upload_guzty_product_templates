@@ -2,7 +2,6 @@ package guzty.banee;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ public class ProductJsonModal {
     private int minCount;
     private int maxCount;
     private String productCategory;
-    private String[] orderType;
+    private List<String> orderType;
     private int leadTime;
     private List<Map<String, Object>> varients;
     private String shortDescription;
@@ -87,11 +86,11 @@ public class ProductJsonModal {
         this.productCategory = value;
     }
 
-    public String[] getOrderType() {
+    public List<String> getOrderType() {
         return orderType;
     }
 
-    public void setOrderType(String[] value) {
+    public void setOrderType(List<String> value) {
         this.orderType = value;
     }
 
@@ -135,7 +134,7 @@ public class ProductJsonModal {
         this.localDelicacies = value;
     }
 
-    public ProductJsonModal(String productName, double price, String productType, String skuSet, double gst, int minCount, int maxCount, String productCategory, String[] orderType, int leadTime, List<Map<String, Object>> varients, String shortDescription, String longDescription, boolean localDelicacies) {
+    public ProductJsonModal(String productName, double price, String productType, String skuSet, double gst, int minCount, int maxCount, String productCategory, List<String> orderType, int leadTime, List<Map<String, Object>> varients, String shortDescription, String longDescription, boolean localDelicacies) {
 
         this.productName = productName;
         this.price = price;
@@ -164,7 +163,7 @@ public class ProductJsonModal {
                 ", minCount=" + minCount +
                 ", maxCount=" + maxCount +
                 ", productCategory='" + productCategory + '\'' +
-                ", orderType=" + Arrays.toString(orderType) +
+                ", orderType=" + orderType.toString() +
                 ", leadTime=" + leadTime +
                 ", varients=" + varients +
                 ", shortDescription='" + shortDescription + '\'' +
