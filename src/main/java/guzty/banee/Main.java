@@ -87,6 +87,8 @@ public class Main {
                                         }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), settingsDocument.getId(), settingsDocument.getReference(), getProductTypeId(productJsonModal.getProductType(), filePath));
 //                                                search: setSearchParam(productJson.productName.trim()),
 
+                                        System.out.println("productModal = " + productModal);
+
                                     } catch (ExecutionException | InterruptedException e) {
                                         throw new RuntimeException(e);
                                     }
