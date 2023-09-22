@@ -6,12 +6,18 @@ import com.google.cloud.firestore.Filter;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.storage.Bucket;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.cloud.StorageClient;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +36,7 @@ public class Main {
             FirebaseApp.initializeApp(options);
 
             Firestore db = FirestoreClient.getFirestore();
+            StorageClient storageClient = StorageClient.getInstance();
 
             ApiFuture<QuerySnapshot> query = db.collection("productCategory").where(Filter.equalTo("deleted", false)).get();
             QuerySnapshot querySnapshot;
@@ -67,6 +74,13 @@ public class Main {
                                     for (final File fileEntry4 : Objects.requireNonNull(fileEntry3.listFiles())) {
 
                                         System.out.println("Upload : " + fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", ""));
+
+                                        try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
+                                            LocalDateTime localDateTime = LocalDateTime.now();
+                                            String blobString = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateTime) + "/" + DateTimeFormatter.ofPattern("HH:mm:ss").format(localDateTime);
+                                            StorageClient.getInstance().bucket().create(blobString, image, Bucket.BlobWriteOption.doesNotExist());
+                                        }
+                                        System.exit(0);
                                     }
                                 }
                             }
