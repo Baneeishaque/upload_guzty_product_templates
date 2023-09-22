@@ -80,9 +80,9 @@ public class Main {
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
                                     System.out.println("productJsonModal = " + productJsonModal);
 
-                                    System.exit(0);
+//                                    System.exit(0);
 
-                                    images.clear();
+//                                    images.clear();
 
                                 } else {
 
