@@ -104,7 +104,7 @@ public class Main {
                                         } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
                                             throw new RuntimeException(e);
                                         }
-                                        System.exit(0);
+//                                        System.exit(0);
                                     }
                                 }
                             }
