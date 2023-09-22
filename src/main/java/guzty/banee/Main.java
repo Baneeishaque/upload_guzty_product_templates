@@ -51,7 +51,7 @@ public class Main {
                         for (final File fileEntry3 : Objects.requireNonNull(fileEntry2.listFiles())) {
 
                             String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
-                            System.out.println("filePath = " + filePath);
+//                            System.out.println("filePath = " + filePath);
 
                             if (data.get("name") == filePath.substring(0, filePath.indexOf("/"))) {
 
