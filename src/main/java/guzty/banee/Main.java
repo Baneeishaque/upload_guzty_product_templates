@@ -8,6 +8,7 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.Storage;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
@@ -101,7 +102,7 @@ public class Main {
                                             try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 
                                                 Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
-                                                System.out.println("image link = " + blob.signUrl(7300, TimeUnit.DAYS));
+                                                System.out.println("image link = " + blob.signUrl(7300, TimeUnit.DAYS, Storage.SignUrlOption.withContentType()));
                                             }
 
                                         } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
