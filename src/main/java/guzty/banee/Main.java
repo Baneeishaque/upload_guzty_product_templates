@@ -80,7 +80,7 @@ public class Main {
                                             String blobString = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateTime) + "/" + DateTimeFormatter.ofPattern("HH:mm:ss").format(localDateTime);
                                             StorageClient.getInstance().bucket("guzty-c2dc5.appspot.com").create(blobString, image, "image/jpeg", Bucket.BlobWriteOption.doesNotExist());
                                         }
-                                        System.exit(0);
+//                                        System.exit(0);
                                     }
                                 }
                             }
