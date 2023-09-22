@@ -6,6 +6,7 @@ import com.google.cloud.firestore.Filter;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Bucket;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -78,7 +79,8 @@ public class Main {
                                         try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
                                             LocalDateTime localDateTime = LocalDateTime.now();
                                             String blobString = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateTime) + "/" + DateTimeFormatter.ofPattern("HH:mm:ss").format(localDateTime);
-                                            StorageClient.getInstance().bucket("guzty-c2dc5.appspot.com").create(blobString, image, "image/jpeg", Bucket.BlobWriteOption.doesNotExist());
+                                            Blob blob = StorageClient.getInstance().bucket("guzty-c2dc5.appspot.com").create(blobString, image, "image/jpeg", Bucket.BlobWriteOption.doesNotExist());
+                                            System.out.println("image link = " + blob.getMediaLink());
                                         }
 //                                        System.exit(0);
                                     }
