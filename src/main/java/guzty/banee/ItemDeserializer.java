@@ -26,7 +26,7 @@ public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
         int maximumCount = node.get("Max count").asInt();
         String productCategory = node.get("Product Category").asText();
 //        String[] orderType = node.get("Order type")
-        int leadTime = node.get("lead time").asInt();
+        int leadTime = node.get("Lead time").asInt();
         List<Map<String, Object>> varients = new ArrayList<>();
         if (node.get("Varients") != null) {
             Map<String, Object> varient = new HashMap<>();
