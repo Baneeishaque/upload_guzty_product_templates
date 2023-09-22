@@ -1,9 +1,12 @@
 package guzty.banee;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+@JsonDeserialize(using = ItemDeserializer.class)
 public class ProductJsonModal {
     private String productName;
     private double price;
@@ -168,77 +171,5 @@ public class ProductJsonModal {
                 ", longDescription='" + longDescription + '\'' +
                 ", localDelicacies=" + localDelicacies +
                 '}';
-    }
-
-    String getVarientId(String varientName) {
-        switch (varientName) {
-            case "1 Ltr":
-                return "GZV1014";
-            case "1.5 Ltr":
-                return "GZV1015";
-            case "2 Ltr":
-                return "GZV1016";
-            case "250":
-                return "GZV1017";
-            case "100":
-                return "GZV1018";
-            case "300":
-                return "GZV1019";
-            case "1kg":
-                return "GZV1021";
-            case "1.5kg":
-                return "GZV1022";
-            case "2kg":
-                return "GZV1023";
-            case "3kg":
-                return "GZV1024";
-            case "5kg":
-                return "GZV1025";
-            case "250gm":
-                return "GZV1026";
-            case "500gm":
-                return "GZV1027";
-            case "750gm":
-                return "GZV1028";
-            case "1000gm":
-                return "GZV1029";
-            case "0.5kg":
-                return "GZV1030";
-            case "0.5ltr":
-                return "GZV1031";
-            case "3200ml":
-                return "GZV1032";
-            case "4500ml":
-                return "GZV1033";
-            case "500":
-                return "GZV1034";
-            case "100ml":
-                return "GZV1035";
-            case "250ml":
-                return "GZV1036";
-            case "500ml":
-                return "GZV1037";
-            case "750ml":
-                return "GZV1038";
-            case "1000ml":
-                return "GZV1039";
-            case "Large":
-                return "GZVID1001";
-            case "Small":
-                return "GZVID1002";
-            case "Medium":
-                return "GZVID1003";
-            case "Extra Large":
-                return "GZVID1009";
-            case "Full":
-                return "GZVID1011";
-            case "Half":
-                return "GZVID1012";
-            case "Quarter":
-                return "GZVID1013";
-            default:
-                System.out.println("No ID for " + varientName);
-                return "";
-        }
     }
 }
