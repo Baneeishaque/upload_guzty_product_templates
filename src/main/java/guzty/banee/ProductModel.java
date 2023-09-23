@@ -1,11 +1,13 @@
 package guzty.banee;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.cloud.firestore.DocumentReference;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+@JsonSerialize(using = ProductModalSerializer.class)
 public class ProductModel {
 
     LocalDateTime createdTime;
@@ -32,7 +34,7 @@ public class ProductModel {
     int fourRating;
     int fiveRating;
     boolean veg;
-    Map position;
+    Map<String,Object> position;
 
     boolean verified;
     List<String> ordersType;
@@ -46,12 +48,12 @@ public class ProductModel {
     double longitude;
     boolean localDelicacies;
     boolean instaKitchen;
-    List variants;
+    List<Map<String, Object>> variants;
     String demoProductId;
     DocumentReference reference;
     String productTypeId;
 
-    public ProductModel(LocalDateTime createdTime, boolean deleted, boolean available, String name, List<String> imageUrls, String shortDescription, String longDescription, double price, int leadingTime, String skuSet, int specialOffer, String productId, String vendorId, String vendorName, boolean mbuVerified, boolean mbuAvailable, String categoryId, String categoryName, int oneRating, int twoRating, int threeRating, int fourRating, int fiveRating, boolean veg, Map position, boolean verified, List<String> ordersType, List<String> selectedOrdersType, int maxOrder, int minOrder, double gst, List<String> search, List<String> keywords, double lat, double longitude, boolean localDelicacies, boolean instaKitchen, List variants, String demoProductId, DocumentReference reference, String productTypeId) {
+    public ProductModel(LocalDateTime createdTime, boolean deleted, boolean available, String name, List<String> imageUrls, String shortDescription, String longDescription, double price, int leadingTime, String skuSet, int specialOffer, String productId, String vendorId, String vendorName, boolean mbuVerified, boolean mbuAvailable, String categoryId, String categoryName, int oneRating, int twoRating, int threeRating, int fourRating, int fiveRating, boolean veg, Map<String, Object> position, boolean verified, List<String> ordersType, List<String> selectedOrdersType, int maxOrder, int minOrder, double gst, List<String> search, List<String> keywords, double lat, double longitude, boolean localDelicacies, boolean instaKitchen, List<Map<String, Object>> variants, String demoProductId, DocumentReference reference, String productTypeId) {
 
         this.createdTime = createdTime;
         this.deleted = deleted;

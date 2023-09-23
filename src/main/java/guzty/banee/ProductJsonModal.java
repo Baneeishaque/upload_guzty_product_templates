@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
 import java.util.Map;
 
-@JsonDeserialize(using = ItemDeserializer.class)
+@JsonDeserialize(using = ProductJsonModalDeserializer.class)
 public class ProductJsonModal {
     private String productName;
     private double price;

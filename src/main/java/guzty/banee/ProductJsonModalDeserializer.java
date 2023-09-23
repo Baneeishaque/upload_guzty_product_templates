@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemDeserializer extends JsonDeserializer<ProductJsonModal> {
+public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonModal> {
     @Override
     public ProductJsonModal deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
 
