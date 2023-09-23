@@ -105,7 +105,7 @@ public class Main {
 //                                        System.out.println("productModal = " + productModal);
 
                                         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
+//                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
 
                                         Map<String, Object> demoProductDocument = new HashMap<>();
                                         demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
