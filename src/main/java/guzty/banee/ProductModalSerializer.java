@@ -14,7 +14,7 @@ public class ProductModalSerializer extends JsonSerializer<ProductModel> {
     public void serialize(ProductModel value, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException {
 
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("createdTime", DateTimeFormatter.ISO_DATE.format(value.createdTime));
+        jsonGenerator.writeStringField("createdTime", DateTimeFormatter.ISO_DATE_TIME.format(value.createdTime));
         jsonGenerator.writeBooleanField("deleted", value.deleted);
         jsonGenerator.writeBooleanField("available", value.available);
         jsonGenerator.writeStringField("name", value.name);
@@ -108,7 +108,7 @@ public class ProductModalSerializer extends JsonSerializer<ProductModel> {
         jsonGenerator.writeEndArray();
 
         jsonGenerator.writeStringField("demoProductId", value.demoProductId);
-        jsonGenerator.writeStringField("reference", value.reference.getPath());
+        jsonGenerator.writeStringField("reference", "/" + value.reference.getPath());
         jsonGenerator.writeStringField("productTypeId", value.productTypeId);
 
         jsonGenerator.writeEndObject();
