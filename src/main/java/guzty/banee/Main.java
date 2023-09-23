@@ -168,9 +168,9 @@ public class Main {
                                         throw new RuntimeException(e);
                                     }
 
-                                    System.exit(0);
+//                                    System.exit(0);
 
-//                                    images.clear();
+                                    images.clear();
 
                                 } else {
 
