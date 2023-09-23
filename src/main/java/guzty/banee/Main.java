@@ -108,7 +108,7 @@ public class Main {
                                         System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
 
                                         Map<String, Object> demoProductDocument = new HashMap<>();
-                                        demoProductDocument.put("createdTime", DateTimeFormatter.ISO_DATE_TIME.format(productModal.createdTime));
+                                        demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
                                         demoProductDocument.put("deleted", productModal.deleted);
                                         demoProductDocument.put("available", productModal.available);
                                         demoProductDocument.put("name", productModal.name);
@@ -158,7 +158,7 @@ public class Main {
                                         demoProductDocument.put("variants", productModal.variants);
 
                                         demoProductDocument.put("demoProductId", productModal.demoProductId);
-                                        demoProductDocument.put("reference", "/" + productModal.reference.getPath());
+                                        demoProductDocument.put("reference", productModal.reference);
                                         demoProductDocument.put("productTypeId", productModal.productTypeId);
 
                                         ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
