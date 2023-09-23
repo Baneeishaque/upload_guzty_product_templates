@@ -222,7 +222,7 @@ public class Main {
             case "diary":
                 return "PDT1003";
             default: {
-                System.out.println("Product Type Not Exist for $productType in $filePath");
+                System.out.println("Product Type Not Exist for" + productType + " in " + filePath);
                 return "";
             }
         }
