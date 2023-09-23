@@ -5,12 +5,17 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.*;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import net.sf.jmimemagic.Magic;
+import net.sf.jmimemagic.MagicException;
+import net.sf.jmimemagic.MagicMatchNotFoundException;
+import net.sf.jmimemagic.MagicParseException;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,7 +93,7 @@ public class Main {
                                         HashMap<String, Object> hashMap = new HashMap<>();
                                         hashMap.put("demoProductId", String.valueOf(++demoProductId));
 
-//                                        settingsDocument.getReference().update(hashMap);
+                                        settingsDocument.getReference().update(hashMap);
 
                                         DocumentReference demoProductReference = db.collection("demoProducts").document(id);
 
@@ -102,11 +107,68 @@ public class Main {
                                         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
                                         System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
 
+                                        Map<String, Object> demoProductDocument = new HashMap<>();
+                                        demoProductDocument.put("createdTime", DateTimeFormatter.ISO_DATE_TIME.format(productModal.createdTime));
+                                        demoProductDocument.put("deleted", productModal.deleted);
+                                        demoProductDocument.put("available", productModal.available);
+                                        demoProductDocument.put("name", productModal.name);
+
+                                        demoProductDocument.put("imageUrls", new ArrayList<>(productModal.imageUrls));
+
+                                        demoProductDocument.put("shortDescription", productModal.shortDescription);
+                                        demoProductDocument.put("longDescription", productModal.longDescription);
+                                        demoProductDocument.put("price", productModal.price);
+                                        demoProductDocument.put("leadingTime", productModal.leadingTime);
+                                        demoProductDocument.put("skuSet", productModal.skuSet);
+                                        demoProductDocument.put("specialOffer", productModal.specialOffer);
+                                        demoProductDocument.put("productId", productModal.productId);
+                                        demoProductDocument.put("vendorId", productModal.vendorId);
+                                        demoProductDocument.put("mbuVerified", productModal.mbuVerified);
+                                        demoProductDocument.put("mbuAvailable", productModal.mbuAvailable);
+                                        demoProductDocument.put("categoryId", productModal.categoryId);
+                                        demoProductDocument.put("categoryName", productModal.categoryName);
+
+                                        demoProductDocument.put("oneRating", productModal.oneRating);
+                                        demoProductDocument.put("twoRating", productModal.twoRating);
+                                        demoProductDocument.put("threeRating", productModal.threeRating);
+                                        demoProductDocument.put("fourRating", productModal.fourRating);
+                                        demoProductDocument.put("fiveRating", productModal.fiveRating);
+                                        demoProductDocument.put("veg", productModal.veg);
+
+                                        demoProductDocument.put("position", productModal.position);
+
+                                        demoProductDocument.put("verified", productModal.verified);
+
+                                        demoProductDocument.put("ordersType", new ArrayList<>(productModal.ordersType));
+                                        demoProductDocument.put("selectedOrdersType", new ArrayList<>(productModal.selectedOrdersType));
+
+                                        demoProductDocument.put("maxOrder", productModal.maxOrder);
+                                        demoProductDocument.put("minOrder", productModal.minOrder);
+                                        demoProductDocument.put("gst", productModal.gst);
+
+                                        demoProductDocument.put("search", new ArrayList<>(productModal.search));
+
+                                        demoProductDocument.put("keywords", new ArrayList<>(productModal.keywords));
+
+                                        demoProductDocument.put("lat", productModal.lat);
+                                        demoProductDocument.put("long", productModal.longitude);
+                                        demoProductDocument.put("localDelicacies", productModal.localDelicacies);
+                                        demoProductDocument.put("instaKitchen", productModal.instaKitchen);
+
+                                        demoProductDocument.put("variants", productModal.variants);
+
+                                        demoProductDocument.put("demoProductId", productModal.demoProductId);
+                                        demoProductDocument.put("reference", "/" + productModal.reference.getPath());
+                                        demoProductDocument.put("productTypeId", productModal.productTypeId);
+
+                                        ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
+                                        System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
+
                                     } catch (ExecutionException | InterruptedException e) {
                                         throw new RuntimeException(e);
                                     }
 
-//                                    System.exit(0);
+                                    System.exit(0);
 
 //                                    images.clear();
 
@@ -117,27 +179,27 @@ public class Main {
                                         String fileName = fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
                                         System.out.println("Upload : " + fileName);
 
-//                                        LocalDateTime localDateTime = LocalDateTime.now();
-//                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + "." + FilenameUtils.getExtension(fileEntry4.getPath());
+                                        LocalDateTime localDateTime = LocalDateTime.now();
+                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + "." + FilenameUtils.getExtension(fileEntry4.getPath());
+
+                                        BlobId blobId = BlobId.of("guzty-c2dc5.appspot.com", blobString);
+                                        try {
+                                            BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                                                    .setMetadata(Map.ofEntries(Map.entry("picked-file-path", fileName)))
+                                                    .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
+                                                    .build();
+                                            Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
+//                                            System.out.println("image = " + blob.getMediaLink());
+                                            images.add(blob.getMediaLink());
+
+//                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 //
-//                                        BlobId blobId = BlobId.of("guzty-c2dc5.appspot.com", blobString);
-//                                        try {
-//                                            BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
-//                                                    .setMetadata(Map.ofEntries(Map.entry("picked-file-path", fileName)))
-//                                                    .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
-//                                                    .build();
-//                                            Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
-////                                            System.out.println("image = " + blob.getMediaLink());
-//                                            images.add(blob.getMediaLink());
-//
-////                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
-////
-////                                                Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
-////                                            }
-//
-//                                        } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
-//                                            throw new RuntimeException(e);
-//                                        }
+//                                                Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
+//                                            }
+
+                                        } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
+                                            throw new RuntimeException(e);
+                                        }
 //                                        System.exit(0);
                                     }
                                 }
