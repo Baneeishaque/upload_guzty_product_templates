@@ -75,8 +75,11 @@ public class CheckDemoProductImages {
 
                 assert documentSnapshot != null;
 
+                imageUrls.remove(0);
+                System.out.println("imageUrls = " + imageUrls);
+
                 HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put(imageUrlsText, imageUrls.remove(0));
+                hashMap.put(imageUrlsText, imageUrls);
                 System.out.println("hashMap = " + hashMap);
 
 //                db.collection(demoProducts).document(Objects.requireNonNull(documentSnapshot.get("reference")).toString()).update(hashMap);
