@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class CheckDemoProductImages {
@@ -67,13 +68,14 @@ public class CheckDemoProductImages {
             }
         } catch (IOException | URISyntaxException e) {
 
+            assert documentSnapshot != null;
+            System.out.println("documentSnapshot = " + documentSnapshot.getId());
+
             System.out.println("exception = " + e);
             System.out.println("i = " + i);
             System.out.println("imageUrls = " + imageUrls);
 
             if (e.getLocalizedMessage().contains("401")) {
-
-                assert documentSnapshot != null;
 
                 imageUrls.remove(i);
                 System.out.println("imageUrls = " + imageUrls);
@@ -82,7 +84,7 @@ public class CheckDemoProductImages {
                 hashMap.put(imageUrlsText, imageUrls);
                 System.out.println("hashMap = " + hashMap);
 
-//                db.collection(demoProducts).document(Objects.requireNonNull(documentSnapshot.get("reference")).toString()).update(hashMap);
+                db.collection(demoProducts).document(Objects.requireNonNull(documentSnapshot.get("reference")).toString()).update(hashMap);
             }
             throw new RuntimeException(e);
         }
