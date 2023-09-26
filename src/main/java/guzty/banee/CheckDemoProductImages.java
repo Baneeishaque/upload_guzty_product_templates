@@ -8,10 +8,15 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class CheckDemoProductImages {
@@ -41,12 +46,28 @@ public class CheckDemoProductImages {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                Map<String, Object> data = document.getData();
-                List<String> imageUrls = (List<String>) data.get("imageUrls");
-                System.out.println("imageUrls = " + imageUrls);
+                List<String> imageUrls = (List<String>) document.getData().get("imageUrls");
+//                System.out.println("imageUrls = " + imageUrls);
+
+                for (String image : imageUrls) {
+
+                    File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(image)));
+                    FileUtils.copyURLToFile(new URL(image), destination);
+                    System.out.println("destination = " + destination.getName());
+                }
             }
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
+
             throw new RuntimeException(e);
         }
+    }
+
+    private static String getUrlWithoutParameters(String url) throws URISyntaxException {
+        URI uri = new URI(url);
+        return new URI(uri.getScheme(),
+                uri.getAuthority(),
+                uri.getPath(),
+                null, // Ignore the query part of the input url
+                uri.getFragment()).toString();
     }
 }
