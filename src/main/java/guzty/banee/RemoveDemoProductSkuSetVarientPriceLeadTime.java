@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class RemoveDemoProductSkuSetVarientPriceLeadTime {
@@ -38,16 +39,19 @@ public class RemoveDemoProductSkuSetVarientPriceLeadTime {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                System.out.println("document = " + document.getData().get("name"));
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("skuSet", "");
-                hashMap.put("variants", new ArrayList<>());
-                hashMap.put("price", 0);
-                hashMap.put("leadingTime", 0);
+                Map<String, Object> data = document.getData();
+                if (Integer.parseInt(document.getId().replace("GZDP", "")) > 1296) {
 
-                document.getReference().update(hashMap);
-                System.out.println("Done");
+                    System.out.println("document = " + data.get("name"));
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("skuSet", "");
+                    hashMap.put("variants", new ArrayList<>());
+                    hashMap.put("price", 0);
+                    hashMap.put("leadingTime", 0);
 
+                    document.getReference().update(hashMap);
+                    System.out.println("Done");
+                }
 //                System.exit(0);
             }
         } catch (IOException | ExecutionException | InterruptedException e) {
