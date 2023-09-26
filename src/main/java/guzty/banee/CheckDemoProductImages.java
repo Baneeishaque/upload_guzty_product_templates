@@ -75,7 +75,7 @@ public class CheckDemoProductImages {
 
                 assert documentSnapshot != null;
 
-                imageUrls.remove(0);
+                imageUrls.remove(i);
                 System.out.println("imageUrls = " + imageUrls);
 
                 HashMap<String, Object> hashMap = new HashMap<>();
