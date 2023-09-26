@@ -38,13 +38,14 @@ public class RemoveDemoProductSkuSetVarientPriceLeadTime {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
+                System.out.println("document = " + document.getData().get("name"));
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("skuSet", "");
                 hashMap.put("variants", new ArrayList<>());
                 hashMap.put("price", 0);
                 hashMap.put("leadingTime", 0);
 
-                document.getReference().update(hashMap);
+//                document.getReference().update(hashMap);
             }
         } catch (IOException | ExecutionException | InterruptedException e) {
 
