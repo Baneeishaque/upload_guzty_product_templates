@@ -49,7 +49,7 @@ public class CheckVendorProductImages {
                 for (CollectionReference subCollection : collections) {
 
                     String subCollectionName = subCollection.getId();
-                    System.out.println("Found sub collection with id: " + subCollectionName);
+//                    System.out.println("Found sub collection with id: " + subCollectionName);
 
                     if (subCollectionName.equals("products")) {
 
@@ -62,14 +62,14 @@ public class CheckVendorProductImages {
                             for (QueryDocumentSnapshot productDocument : productDocuments) {
 
                                 List<String> imageUrls = (List<String>) productDocument.getData().get(imageUrlsText);
-                                System.out.println("imageUrls = " + imageUrls);
+//                                System.out.println("imageUrls = " + imageUrls);
 
                                 for (int i = 0; i < imageUrls.size(); i++) {
 
                                     File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
                                     try {
                                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
-                                        System.out.println("destination = " + destination.getName());
+//                                        System.out.println("destination = " + destination.getName());
 
                                     } catch (IOException e) {
 
