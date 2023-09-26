@@ -40,7 +40,7 @@ public class RemoveDemoProductSkuSetVarientPriceLeadTime {
             for (QueryDocumentSnapshot document : documents) {
 
                 Map<String, Object> data = document.getData();
-                if (Integer.parseInt(document.getId().replace("GZDP", "")) > 1302) {
+                if (Integer.parseInt(document.getId().replace("GZDP", "")) > 1301) {
 
                     System.out.println("document = " + data.get("name"));
                     HashMap<String, Object> hashMap = new HashMap<>();
