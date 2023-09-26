@@ -63,13 +63,6 @@ public class IdentifyProductBasedOnVariantPrice {
                                     }
                                 } catch (ClassCastException e) {
 
-                                    if (Integer.parseInt(String.valueOf((double) variant.get("price"))) == 240) {
-
-                                        System.out.println("productDocument = " + data);
-                                        System.exit(0);
-                                    }
-                                } catch (NumberFormatException e) {
-
                                     if (Double.parseDouble(String.valueOf((double) variant.get("price"))) == 240.0) {
 
                                         System.out.println("productDocument = " + data);
