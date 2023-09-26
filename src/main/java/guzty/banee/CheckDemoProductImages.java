@@ -23,14 +23,13 @@ import java.util.concurrent.ExecutionException;
 public class CheckDemoProductImages {
     public static void main(String[] args) {
 
-        int i = 0;
-        QueryDocumentSnapshot documentSnapshot = null;
+        int i;
         Firestore db;
         String demoProducts = "demoProducts";
         String imageUrlsText = "imageUrls";
 
         GoogleCredentials credentials;
-        List<String> imageUrls = null;
+        List<String> imageUrls;
         try {
             credentials = GoogleCredentials.getApplicationDefault();
             FirebaseOptions options = FirebaseOptions.builder()
@@ -53,8 +52,6 @@ public class CheckDemoProductImages {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                documentSnapshot = document;
-
                 imageUrls = (List<String>) document.getData().get(imageUrlsText);
 //                System.out.println("imageUrls = " + imageUrls);
 
@@ -71,13 +68,9 @@ public class CheckDemoProductImages {
 
                         if (e.getLocalizedMessage().contains("401")) {
 
-                            System.out.println("documentSnapshot = " + documentSnapshot.getId());
-                            imageUrls = (List<String>) documentSnapshot.get(imageUrlsText);
-
                             System.out.println("i = " + i);
                             System.out.println("imageUrls = " + imageUrls);
 
-                            assert imageUrls != null;
                             imageUrls.remove(i);
                             System.out.println("imageUrls = " + imageUrls);
 
@@ -85,7 +78,8 @@ public class CheckDemoProductImages {
                             hashMap.put(imageUrlsText, imageUrls);
                             System.out.println("hashMap = " + hashMap);
 
-                            documentSnapshot.getReference().update(hashMap);
+                            document.getReference().update(hashMap);
+
                         } else {
                             throw new RuntimeException(e);
                         }
