@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
-public class Main {
+public class UploadProductTemplates {
     public static void main(String[] args) {
 
         // Use the application default credentials
