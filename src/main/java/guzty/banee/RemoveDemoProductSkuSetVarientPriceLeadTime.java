@@ -45,7 +45,9 @@ public class RemoveDemoProductSkuSetVarientPriceLeadTime {
                 hashMap.put("price", 0);
                 hashMap.put("leadingTime", 0);
 
-//                document.getReference().update(hashMap);
+                document.getReference().update(hashMap);
+
+                System.exit(0);
             }
         } catch (IOException | ExecutionException | InterruptedException e) {
 
