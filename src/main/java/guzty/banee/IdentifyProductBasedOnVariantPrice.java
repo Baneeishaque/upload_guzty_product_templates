@@ -57,7 +57,7 @@ public class IdentifyProductBasedOnVariantPrice {
                             for (Map<String, Object> variant : variants) {
                                 if (variant.get("variantName").toString().equals("1kg")) {
 
-                                    System.out.println("product = " + data.get("name") + " " + productDocument.getId());
+                                    System.out.println("product = " + data.get("name") + " " + productDocument.getReference());
 //                                    System.exit(0);
                                 }
                             }
