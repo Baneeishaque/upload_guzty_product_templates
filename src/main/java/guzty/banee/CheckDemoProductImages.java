@@ -92,7 +92,7 @@ public class CheckDemoProductImages {
         }
     }
 
-    private static String getUrlWithoutParameters(String url) throws URISyntaxException {
+    public static String getUrlWithoutParameters(String url) throws URISyntaxException {
         URI uri = new URI(url);
         return new URI(uri.getScheme(),
                 uri.getAuthority(),

@@ -9,17 +9,24 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
+import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import static guzty.banee.CheckDemoProductImages.getUrlWithoutParameters;
 
 public class CheckVendorProductImages {
     public static void main(String[] args) {
 
         Firestore db;
+        String imageUrlsText = "imageUrls";
 
         GoogleCredentials credentials;
         try {
@@ -33,35 +40,70 @@ public class CheckVendorProductImages {
 
             ApiFuture<QuerySnapshot> query = db.collection("vendors").get();
             QuerySnapshot querySnapshot;
-            try {
 
-                querySnapshot = query.get();
-
-            } catch (InterruptedException | ExecutionException e) {
-
-                throw new RuntimeException(e);
-            }
+            querySnapshot = query.get();
             List<QueryDocumentSnapshot> vendorsDocument = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot vendorDocument : vendorsDocument) {
 
                 Iterable<CollectionReference> collections = vendorDocument.getReference().listCollections();
-                for (CollectionReference collRef : collections) {
+                for (CollectionReference subCollection : collections) {
 
-                    System.out.println("Found sub collection with id: " + collRef.getId());
+                    String subCollectionName = subCollection.getId();
+                    System.out.println("Found sub collection with id: " + subCollectionName);
+
+                    if (subCollectionName.equals("products")) {
+
+                        ApiFuture<QuerySnapshot> query2 = subCollection.get();
+                        try {
+
+                            QuerySnapshot querySnapshot2 = query2.get();
+                            List<QueryDocumentSnapshot> productDocuments = querySnapshot2.getDocuments();
+
+                            for (QueryDocumentSnapshot productDocument : productDocuments) {
+
+                                List<String> imageUrls = (List<String>) productDocument.getData().get(imageUrlsText);
+                                System.out.println("imageUrls = " + imageUrls);
+
+                                for (int i = 0; i < imageUrls.size(); i++) {
+
+                                    File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
+                                    try {
+                                        FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
+                                        System.out.println("destination = " + destination.getName());
+
+                                    } catch (IOException e) {
+
+                                        System.out.println("exception = " + e);
+
+                                        if (e.getLocalizedMessage().contains("401")) {
+
+                                            System.out.println("i = " + i);
+                                            System.out.println("imageUrls = " + imageUrls);
+
+                                            imageUrls.remove(i);
+                                            System.out.println("imageUrls = " + imageUrls);
+
+                                            HashMap<String, Object> hashMap = new HashMap<>();
+                                            hashMap.put(imageUrlsText, imageUrls);
+                                            System.out.println("hashMap = " + hashMap);
+
+//                                            productDocument.getReference().update(hashMap);
+
+                                        } else {
+                                            throw new RuntimeException(e);
+                                        }
+                                    }
+                                }
+                            }
+                        } catch (InterruptedException | ExecutionException | URISyntaxException e) {
+
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
-        } catch (IOException e) {
-
+        } catch (ExecutionException | InterruptedException | IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static String getUrlWithoutParameters(String url) throws URISyntaxException {
-        URI uri = new URI(url);
-        return new URI(uri.getScheme(),
-                uri.getAuthority(),
-                uri.getPath(),
-                null, // Ignore the query part of the input url
-                uri.getFragment()).toString();
     }
 }
