@@ -55,7 +55,7 @@ public class IdentifyProductBasedOnVariantPrice {
                             List<Map<String, Object>> variants = (List<Map<String, Object>>) data.get("variants");
                             System.out.println("variants = " + variants);
                             for (Map<String, Object> variant : variants) {
-                                if (variant.get("varientName").toString().equals("1kg")) {
+                                if (variant.get("variantName").toString().equals("1kg")) {
                                     System.exit(0);
                                 }
                             }
