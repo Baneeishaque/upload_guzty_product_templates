@@ -86,8 +86,9 @@ public class CheckDemoProductImages {
                 System.out.println("hashMap = " + hashMap);
 
                 documentSnapshot.getReference().update(hashMap);
+            } else {
+                throw new RuntimeException(e);
             }
-            throw new RuntimeException(e);
         }
     }
 
