@@ -16,13 +16,20 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class CheckDemoProductImages {
     public static void main(String[] args) {
 
-        // Use the application default credentials
+        int i = 0;
+        QueryDocumentSnapshot documentSnapshot = null;
+        Firestore db = null;
+        String demoProducts = "demoProducts";
+        String imageUrlsText = "imageUrls";
+        List<String> imageUrls = null;
+
         GoogleCredentials credentials;
         try {
             credentials = GoogleCredentials.getApplicationDefault();
@@ -31,9 +38,9 @@ public class CheckDemoProductImages {
                     .build();
             FirebaseApp.initializeApp(options);
 
-            Firestore db = FirestoreClient.getFirestore();
+            db = FirestoreClient.getFirestore();
 
-            ApiFuture<QuerySnapshot> query = db.collection("demoProducts").get();
+            ApiFuture<QuerySnapshot> query = db.collection(demoProducts).get();
             QuerySnapshot querySnapshot;
             try {
 
@@ -46,19 +53,35 @@ public class CheckDemoProductImages {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                List<String> imageUrls = (List<String>) document.getData().get("imageUrls");
+                documentSnapshot = document;
+
+                imageUrls = (List<String>) document.getData().get(imageUrlsText);
 //                System.out.println("imageUrls = " + imageUrls);
 
-                for (String image : imageUrls) {
+                for (i = 0; i < imageUrls.size(); i++) {
 
-                    File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(image)));
-                    FileUtils.copyURLToFile(new URL(image), destination);
+                    File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
+                    FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
                     System.out.println("destination = " + destination.getName());
                 }
             }
         } catch (IOException | URISyntaxException e) {
 
             System.out.println("exception = " + e);
+            System.out.println("i = " + i);
+            System.out.println("imageUrls = " + imageUrls);
+
+            if (e.getLocalizedMessage().contains("401")) {
+
+                assert documentSnapshot != null;
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put(imageUrlsText, imageUrls.remove(i));
+
+                System.out.println("hashMap = " + hashMap);
+
+//                db.collection(demoProducts).document(Objects.requireNonNull(documentSnapshot.get("reference")).toString()).update(hashMap);
+            }
             throw new RuntimeException(e);
         }
     }
