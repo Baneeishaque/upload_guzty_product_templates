@@ -27,5 +27,5 @@ tasks.test {
 }
 
 application {
-    mainClass.set("guzty.banee.Main.UploadProductTemplates")
+    mainClass.set("guzty.banee.CheckDemoProductImages")
 }
