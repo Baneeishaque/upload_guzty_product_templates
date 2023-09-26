@@ -61,34 +61,40 @@ public class CheckDemoProductImages {
                 for (i = 0; i < imageUrls.size(); i++) {
 
                     File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
-                    FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
-                    System.out.println("destination = " + destination.getName());
+                    try {
+                        FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
+                        System.out.println("destination = " + destination.getName());
+
+                    } catch (IOException e) {
+
+                        System.out.println("exception = " + e);
+
+                        if (e.getLocalizedMessage().contains("401")) {
+
+                            System.out.println("documentSnapshot = " + documentSnapshot.getId());
+                            imageUrls = (List<String>) documentSnapshot.get(imageUrlsText);
+
+                            System.out.println("i = " + i);
+                            System.out.println("imageUrls = " + imageUrls);
+
+                            assert imageUrls != null;
+                            imageUrls.remove(i);
+                            System.out.println("imageUrls = " + imageUrls);
+
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put(imageUrlsText, imageUrls);
+                            System.out.println("hashMap = " + hashMap);
+
+                            documentSnapshot.getReference().update(hashMap);
+                        } else {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
         } catch (IOException | URISyntaxException e) {
 
-            System.out.println("exception = " + e);
-
-            if (e.getLocalizedMessage().contains("401")) {
-
-                assert documentSnapshot != null;
-                System.out.println("documentSnapshot = " + documentSnapshot.getId());
-                imageUrls = (List<String>) documentSnapshot.get(imageUrlsText);
-
-                System.out.println("i = " + i);
-                System.out.println("imageUrls = " + imageUrls);
-
-                imageUrls.remove(i);
-                System.out.println("imageUrls = " + imageUrls);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put(imageUrlsText, imageUrls);
-                System.out.println("hashMap = " + hashMap);
-
-                documentSnapshot.getReference().update(hashMap);
-            } else {
-                throw new RuntimeException(e);
-            }
+            throw new RuntimeException(e);
         }
     }
 
