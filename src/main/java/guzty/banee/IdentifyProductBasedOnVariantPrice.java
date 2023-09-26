@@ -55,10 +55,19 @@ public class IdentifyProductBasedOnVariantPrice {
                             List<Map<String, Object>> variants = (List<Map<String, Object>>) data.get("variants");
                             System.out.println("variants = " + variants);
                             for (Map<String, Object> variant : variants) {
-                                if (Integer.parseInt(String.valueOf((double) variant.get("price"))) == 240) {
+                                try {
+                                    if (Integer.parseInt(String.valueOf((long) variant.get("price"))) == 240) {
 
-                                    System.out.println("productDocument = " + data);
-                                    System.exit(0);
+                                        System.out.println("productDocument = " + data);
+                                        System.exit(0);
+                                    }
+                                } catch (ClassCastException e) {
+
+                                    if (Integer.parseInt(String.valueOf((double) variant.get("price"))) == 240) {
+
+                                        System.out.println("productDocument = " + data);
+                                        System.exit(0);
+                                    }
                                 }
                             }
                         }
