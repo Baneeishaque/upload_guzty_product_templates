@@ -51,6 +51,7 @@ public class IdentifyProductBasedOnVariantPrice {
                         for (QueryDocumentSnapshot productDocument : productDocuments) {
 
                             Map<String, Object> data = productDocument.getData();
+                            System.out.println("productDocument = " + data);
                             List<Map<String, Object>> variants = (List<Map<String, Object>>) data.get("variants");
                             System.out.println("variants = " + variants);
                             for (Map<String, Object> variant : variants) {
