@@ -58,6 +58,7 @@ public class CheckDemoProductImages {
             }
         } catch (IOException | URISyntaxException e) {
 
+            System.out.println("exception = " + e);
             throw new RuntimeException(e);
         }
     }
