@@ -53,7 +53,7 @@ public class IdentifyProductBasedOnVariantPrice {
                             Map<String, Object> data = productDocument.getData();
                             List<Map<String, Object>> variants = (List<Map<String, Object>>) data.get("variants");
                             for (Map<String, Object> variant : variants) {
-                                if (Integer.parseInt((String) variant.get("price")) == 240) {
+                                if (Integer.parseInt(String.valueOf((long) variant.get("price"))) == 240) {
 
                                     System.out.println("productDocument = " + data);
                                     System.exit(0);
