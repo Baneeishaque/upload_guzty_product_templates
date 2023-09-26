@@ -33,7 +33,7 @@ public class CheckDemoProductImages {
             try {
 
                 querySnapshot = query.get();
-                
+
             } catch (InterruptedException | ExecutionException e) {
 
                 throw new RuntimeException(e);
@@ -41,8 +41,9 @@ public class CheckDemoProductImages {
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                System.out.println("document = " + document.getData());
                 Map<String, Object> data = document.getData();
+                List<String> imageUrls = (List<String>) data.get("imageUrls");
+                System.out.println("imageUrls = " + imageUrls);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
