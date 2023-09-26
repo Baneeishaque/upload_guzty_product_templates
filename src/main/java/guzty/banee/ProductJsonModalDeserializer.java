@@ -53,9 +53,9 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
 
                     Map<String, Object> varient = new HashMap<>();
                     String varientName = varientNode.get("varient name").asText();
-                    varient.put("varientName", varientName);
+                    varient.put("variantName", varientName);
                     varient.put("price", varientNode.get("varient price").asText());
-                    varient.put("varientId", getVarientId(varientName));
+                    varient.put("variantId", getVarientId(varientName));
                     varients.add(varient);
                 }
             }

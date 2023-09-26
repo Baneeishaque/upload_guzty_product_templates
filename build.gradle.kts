@@ -27,5 +27,5 @@ tasks.test {
 }
 
 application {
-    mainClass.set("guzty.banee.IdentifyProductBasedOnVariantPrice")
+    mainClass.set("guzty.banee.UpdateVendorProductVariantFields")
 }
