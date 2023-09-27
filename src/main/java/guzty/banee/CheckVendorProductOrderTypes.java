@@ -63,6 +63,20 @@ public class CheckVendorProductOrderTypes {
 //                                    System.out.println("productDocument = " + productDocument.getReference());
                                 }
                             }
+
+                            List<String> selectedOrdersType = (List<String>) productDocument.getData().get("selectedOrdersType");
+
+                            for (String selectedOrderType : selectedOrdersType) {
+
+                                if (!selectedOrderType.equals("Dine In") && !selectedOrderType.equals("Delivery") && !selectedOrderType.equals("Take Away")) {
+
+                                    if (!selectedOrderType.equals("Take away") && !selectedOrderType.equals("Dine-in")) {
+
+                                        System.out.println("selectedOrderType = " + selectedOrderType);
+                                    }
+//                                    System.out.println("productDocument = " + productDocument.getReference());
+                                }
+                            }
                         }
 
                     }
