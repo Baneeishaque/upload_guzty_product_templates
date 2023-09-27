@@ -28,31 +28,21 @@ import java.util.concurrent.ExecutionException;
 public class UploadProductTemplates {
     public static void main(String[] args) {
 
-        // Use the application default credentials
-        GoogleCredentials credentials;
         try {
-            credentials = GoogleCredentials.getApplicationDefault();
+            GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(credentials)
                     .build();
             FirebaseApp.initializeApp(options);
 
             Firestore db = FirestoreClient.getFirestore();
-//            Storage storage = StorageOptions.newBuilder().
-//                    setCredentials(credentials).build().getService();
-//            StorageClient storageClient = StorageClient.getInstance();
             Storage storage = StorageOptions.getDefaultInstance().getService();
 
             DateTimeFormatter dateTimeFormatterDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             DateTimeFormatter dateTimeFormatterTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 
             ApiFuture<QuerySnapshot> query = db.collection("productCategory").where(Filter.equalTo("deleted", false)).get();
-            QuerySnapshot querySnapshot;
-            try {
-                querySnapshot = query.get();
-            } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException(e);
-            }
+            QuerySnapshot querySnapshot = query.get();
             List<String> images = new ArrayList<>();
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
@@ -61,7 +51,7 @@ public class UploadProductTemplates {
                 Map<String, Object> data = document.getData();
                 String categoryName = data.get("name").toString();
                 System.out.println("Category Name = " + categoryName);
-                File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets");
+                File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets2");
                 for (final File fileEntry : Objects.requireNonNull(rootFolder.listFiles())) {
 
                     for (final File fileEntry2 : Objects.requireNonNull(fileEntry.listFiles())) {
@@ -79,94 +69,87 @@ public class UploadProductTemplates {
 
                                     ObjectMapper mapper = new ObjectMapper();
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
-//                                    System.out.println("productJsonModal = " + productJsonModal);
+                                    System.out.println("productJsonModal = " + productJsonModal);
 
                                     ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
-                                    DocumentSnapshot settingsDocument;
-                                    try {
-
-                                        settingsDocument = querySnapshotApiFuture.get();
-                                        int demoProductId = Integer.parseInt(Objects.requireNonNull(settingsDocument.get("demoProductId")).toString());
-                                        String id = "GZDP" + demoProductId;
+                                    DocumentSnapshot settingsDocument = querySnapshotApiFuture.get();
+                                    int demoProductId = Integer.parseInt(Objects.requireNonNull(settingsDocument.get("demoProductId")).toString());
+                                    String id = "GZDP" + demoProductId;
 //                                        System.out.println("id = " + id);
 
-                                        HashMap<String, Object> hashMap = new HashMap<>();
-                                        hashMap.put("demoProductId", String.valueOf(++demoProductId));
+                                    HashMap<String, Object> hashMap = new HashMap<>();
+                                    hashMap.put("demoProductId", String.valueOf(++demoProductId));
 
-                                        settingsDocument.getReference().update(hashMap);
+                                    settingsDocument.getReference().update(hashMap);
 
-                                        DocumentReference demoProductReference = db.collection("demoProducts").document(id);
+                                    DocumentReference demoProductReference = db.collection("demoProducts").document(id);
 
-                                        ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
-                                        }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), demoProductReference.getId(), demoProductReference, getProductTypeId(productJsonModal.getProductType(), filePath));
+                                    ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
+                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), demoProductReference.getId(), demoProductReference, getProductTypeId(productJsonModal.getProductType(), filePath));
 
 //                                                search: setSearchParam(productJson.productName.trim()),
 
 //                                        System.out.println("productModal = " + productModal);
 
-                                        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 //                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
 
-                                        Map<String, Object> demoProductDocument = new HashMap<>();
-                                        demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
-                                        demoProductDocument.put("deleted", productModal.deleted);
-                                        demoProductDocument.put("available", productModal.available);
-                                        demoProductDocument.put("name", productModal.name);
+                                    Map<String, Object> demoProductDocument = new HashMap<>();
+                                    demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
+                                    demoProductDocument.put("deleted", productModal.deleted);
+                                    demoProductDocument.put("available", productModal.available);
+                                    demoProductDocument.put("name", productModal.name);
 
-                                        demoProductDocument.put("imageUrls", new ArrayList<>(productModal.imageUrls));
+                                    demoProductDocument.put("imageUrls", new ArrayList<>(productModal.imageUrls));
 
-                                        demoProductDocument.put("shortDescription", productModal.shortDescription);
-                                        demoProductDocument.put("longDescription", productModal.longDescription);
-                                        demoProductDocument.put("price", productModal.price);
-                                        demoProductDocument.put("leadingTime", productModal.leadingTime);
-                                        demoProductDocument.put("skuSet", productModal.skuSet);
-                                        demoProductDocument.put("specialOffer", productModal.specialOffer);
-                                        demoProductDocument.put("productId", productModal.productId);
-                                        demoProductDocument.put("vendorId", productModal.vendorId);
-                                        demoProductDocument.put("mbuVerified", productModal.mbuVerified);
-                                        demoProductDocument.put("mbuAvailable", productModal.mbuAvailable);
-                                        demoProductDocument.put("categoryId", productModal.categoryId);
-                                        demoProductDocument.put("categoryName", productModal.categoryName);
+                                    demoProductDocument.put("shortDescription", productModal.shortDescription);
+                                    demoProductDocument.put("longDescription", productModal.longDescription);
+                                    demoProductDocument.put("price", 0);
+                                    demoProductDocument.put("leadingTime", 0);
+                                    demoProductDocument.put("skuSet", "");
+                                    demoProductDocument.put("specialOffer", productModal.specialOffer);
+                                    demoProductDocument.put("productId", productModal.productId);
+                                    demoProductDocument.put("vendorId", productModal.vendorId);
+                                    demoProductDocument.put("mbuVerified", productModal.mbuVerified);
+                                    demoProductDocument.put("mbuAvailable", productModal.mbuAvailable);
+                                    demoProductDocument.put("categoryId", productModal.categoryId);
+                                    demoProductDocument.put("categoryName", productModal.categoryName);
 
-                                        demoProductDocument.put("oneRating", productModal.oneRating);
-                                        demoProductDocument.put("twoRating", productModal.twoRating);
-                                        demoProductDocument.put("threeRating", productModal.threeRating);
-                                        demoProductDocument.put("fourRating", productModal.fourRating);
-                                        demoProductDocument.put("fiveRating", productModal.fiveRating);
-                                        demoProductDocument.put("veg", productModal.veg);
+                                    demoProductDocument.put("oneRating", productModal.oneRating);
+                                    demoProductDocument.put("twoRating", productModal.twoRating);
+                                    demoProductDocument.put("threeRating", productModal.threeRating);
+                                    demoProductDocument.put("fourRating", productModal.fourRating);
+                                    demoProductDocument.put("fiveRating", productModal.fiveRating);
+                                    demoProductDocument.put("veg", productModal.veg);
 
-                                        demoProductDocument.put("position", productModal.position);
+                                    demoProductDocument.put("position", productModal.position);
 
-                                        demoProductDocument.put("verified", productModal.verified);
+                                    demoProductDocument.put("verified", productModal.verified);
 
-                                        demoProductDocument.put("ordersType", new ArrayList<>(productModal.ordersType));
-                                        demoProductDocument.put("selectedOrdersType", new ArrayList<>(productModal.selectedOrdersType));
+                                    demoProductDocument.put("ordersType", new ArrayList<>(productModal.ordersType));
+                                    demoProductDocument.put("selectedOrdersType", new ArrayList<>(productModal.selectedOrdersType));
 
-                                        demoProductDocument.put("maxOrder", productModal.maxOrder);
-                                        demoProductDocument.put("minOrder", productModal.minOrder);
-                                        demoProductDocument.put("gst", productModal.gst);
+                                    demoProductDocument.put("maxOrder", productModal.maxOrder);
+                                    demoProductDocument.put("minOrder", productModal.minOrder);
+                                    demoProductDocument.put("gst", productModal.gst);
 
-                                        demoProductDocument.put("search", new ArrayList<>(productModal.search));
+                                    demoProductDocument.put("search", new ArrayList<>(productModal.search));
 
-                                        demoProductDocument.put("keywords", new ArrayList<>(productModal.keywords));
+                                    demoProductDocument.put("keywords", new ArrayList<>(productModal.keywords));
 
-                                        demoProductDocument.put("lat", productModal.lat);
-                                        demoProductDocument.put("long", productModal.longitude);
-                                        demoProductDocument.put("localDelicacies", productModal.localDelicacies);
-                                        demoProductDocument.put("instaKitchen", productModal.instaKitchen);
+                                    demoProductDocument.put("lat", productModal.lat);
+                                    demoProductDocument.put("long", productModal.longitude);
+                                    demoProductDocument.put("localDelicacies", productModal.localDelicacies);
+                                    demoProductDocument.put("instaKitchen", productModal.instaKitchen);
 
-                                        demoProductDocument.put("variants", productModal.variants);
+                                    demoProductDocument.put("variants", List.of());
 
-                                        demoProductDocument.put("demoProductId", productModal.demoProductId);
-                                        demoProductDocument.put("reference", productModal.reference);
-                                        demoProductDocument.put("productTypeId", productModal.productTypeId);
+                                    demoProductDocument.put("demoProductId", productModal.demoProductId);
+                                    demoProductDocument.put("reference", productModal.reference);
+                                    demoProductDocument.put("productTypeId", productModal.productTypeId);
 
-                                        ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
-                                        System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
-
-                                    } catch (ExecutionException | InterruptedException e) {
-                                        throw new RuntimeException(e);
-                                    }
+                                    ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
+                                    System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
 
 //                                    System.exit(0);
 
@@ -208,7 +191,7 @@ public class UploadProductTemplates {
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

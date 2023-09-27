@@ -26,10 +26,6 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
         int maximumCount = node.get("Max count").asInt();
         String productCategory = node.get("Product Category").asText();
 
-//        ObjectMapper mapper = new ObjectMapper();
-//        String[] orderType = mapper.readValue(node.get("Order type").asText(),String[].class);
-//        System.out.println("node = " +node.get("Order type").asText());
-
         List<String> orderTypeList = new ArrayList<>();
         JsonNode orderTypesNode = node.get("Order type");
         if (orderTypesNode.isArray()) {
@@ -37,7 +33,21 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
             for (JsonNode orderType :
                     orderTypesNode) {
 
-                orderTypeList.add(orderType.asText());
+                if (orderType.asText().equals("Delivery")) {
+
+                    orderTypeList.add(orderType.asText());
+
+                } else if (orderType.asText().equals("Take away")) {
+
+                    orderTypeList.add("Take Away");
+
+                } else if (orderType.asText().equals("Dine-in")) {
+
+                    orderTypeList.add("Dine In");
+
+                }else{
+                    System.out.println("orderType = " + orderType);
+                }
             }
         }
 
