@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -24,31 +23,23 @@ public class CheckDemoProductImages {
     public static void main(String[] args) {
 
         int i;
-        Firestore db;
         String demoProducts = "demoProducts";
         String imageUrlsText = "imageUrls";
 
-        GoogleCredentials credentials;
         List<String> imageUrls;
         try {
-            credentials = GoogleCredentials.getApplicationDefault();
+            GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(credentials)
                     .build();
             FirebaseApp.initializeApp(options);
 
-            db = FirestoreClient.getFirestore();
+            Firestore db = FirestoreClient.getFirestore();
 
             ApiFuture<QuerySnapshot> query = db.collection(demoProducts).get();
-            QuerySnapshot querySnapshot;
-            try {
 
-                querySnapshot = query.get();
+            QuerySnapshot querySnapshot = query.get();
 
-            } catch (InterruptedException | ExecutionException e) {
-
-                throw new RuntimeException(e);
-            }
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
@@ -69,16 +60,16 @@ public class CheckDemoProductImages {
                         if (e.getLocalizedMessage().contains("401")) {
 
                             System.out.println("i = " + i);
-                            System.out.println("imageUrls = " + imageUrls);
-
-                            imageUrls.remove(i);
-                            System.out.println("imageUrls = " + imageUrls);
-
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put(imageUrlsText, imageUrls);
-                            System.out.println("hashMap = " + hashMap);
-
-                            document.getReference().update(hashMap);
+//                            System.out.println("imageUrls = " + imageUrls);
+//
+//                            imageUrls.remove(i);
+//                            System.out.println("imageUrls = " + imageUrls);
+//
+//                            HashMap<String, Object> hashMap = new HashMap<>();
+//                            hashMap.put(imageUrlsText, imageUrls);
+//                            System.out.println("hashMap = " + hashMap);
+//
+//                            document.getReference().update(hashMap);
 
                         } else {
                             throw new RuntimeException(e);
@@ -86,7 +77,7 @@ public class CheckDemoProductImages {
                     }
                 }
             }
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException | URISyntaxException | ExecutionException | InterruptedException e) {
 
             throw new RuntimeException(e);
         }
