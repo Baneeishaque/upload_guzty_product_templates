@@ -59,7 +59,7 @@ public class CheckDemoProductImages {
 
                         if (e.getLocalizedMessage().contains("401")) {
 
-                            System.out.println("i = " + i);
+                            System.out.println("i = " + i + ", " + document.getId());
 //                            System.out.println("imageUrls = " + imageUrls);
 //
 //                            imageUrls.remove(i);
