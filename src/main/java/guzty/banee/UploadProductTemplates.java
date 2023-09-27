@@ -64,7 +64,7 @@ public class UploadProductTemplates {
 
                                     ObjectMapper mapper = new ObjectMapper();
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
-                                    System.out.println("productJsonModal = " + productJsonModal);
+//                                    System.out.println("productJsonModal = " + productJsonModal);
 
                                     ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
                                     DocumentSnapshot settingsDocument = querySnapshotApiFuture.get();
