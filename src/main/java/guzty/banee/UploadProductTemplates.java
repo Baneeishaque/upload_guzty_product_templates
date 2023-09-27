@@ -1,12 +1,10 @@
 package guzty.banee;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Filter;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.google.firebase.FirebaseApp;
@@ -17,11 +15,9 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class UploadProductTemplates {
@@ -70,11 +66,11 @@ public class UploadProductTemplates {
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
                                     System.out.println("productJsonModal = " + productJsonModal);
 
-//                                    ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
-//                                    DocumentSnapshot settingsDocument = querySnapshotApiFuture.get();
-//                                    int demoProductId = Integer.parseInt(Objects.requireNonNull(settingsDocument.get("demoProductId")).toString());
-//                                    String id = "GZDP" + demoProductId;
-////                                        System.out.println("id = " + id);
+                                    ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
+                                    DocumentSnapshot settingsDocument = querySnapshotApiFuture.get();
+                                    int demoProductId = Integer.parseInt(Objects.requireNonNull(settingsDocument.get("demoProductId")).toString());
+                                    String id = "GZDP" + demoProductId;
+//                                        System.out.println("id = " + id);
 //
 //                                    HashMap<String, Object> hashMap = new HashMap<>();
 //                                    hashMap.put("demoProductId", String.valueOf(++demoProductId));
@@ -83,16 +79,16 @@ public class UploadProductTemplates {
 //
 //                                    DocumentReference demoProductReference = db.collection("demoProducts").document(id);
 //
-//                                    ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
-//                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), demoProductReference.getId(), demoProductReference, getProductTypeId(productJsonModal.getProductType(), filePath));
-//
-////                                                search: setSearchParam(productJson.productName.trim()),
-//
-////                                        System.out.println("productModal = " + productModal);
-//
-//                                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-////                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
-//
+                                    ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
+                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), settingsDocument.getId(), settingsDocument.getReference(), getProductTypeId(productJsonModal.getProductType(), filePath));
+
+//                                                search: setSearchParam(productJson.productName.trim()),
+
+                                        System.out.println("productModal = " + productModal);
+
+                                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
+
 //                                    Map<String, Object> demoProductDocument = new HashMap<>();
 //                                    demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
 //                                    demoProductDocument.put("deleted", productModal.deleted);
