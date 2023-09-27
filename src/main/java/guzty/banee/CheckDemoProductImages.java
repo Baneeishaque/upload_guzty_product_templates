@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -60,16 +61,16 @@ public class CheckDemoProductImages {
                         if (e.getLocalizedMessage().contains("401")) {
 
                             System.out.println("i = " + i + ", " + document.getId());
-//                            System.out.println("imageUrls = " + imageUrls);
-//
-//                            imageUrls.remove(i);
-//                            System.out.println("imageUrls = " + imageUrls);
-//
-//                            HashMap<String, Object> hashMap = new HashMap<>();
-//                            hashMap.put(imageUrlsText, imageUrls);
-//                            System.out.println("hashMap = " + hashMap);
-//
-//                            document.getReference().update(hashMap);
+                            System.out.println("imageUrls = " + imageUrls);
+
+                            imageUrls.remove(i);
+                            System.out.println("imageUrls = " + imageUrls);
+
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put(imageUrlsText, imageUrls);
+                            System.out.println("hashMap = " + hashMap);
+
+                            document.getReference().update(hashMap);
 
                         } else {
                             throw new RuntimeException(e);
