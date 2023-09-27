@@ -1,0 +1,25 @@
+{
+  "product name":"Gobi Fry",
+  "Price": 0,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "It has now become a huge hit that people started making vegetarian dishes like Panner 65 and Gobi 65 following its name. Some people believe that 65 number of ingredients are used in making this dish and hence they named it so.",
+  "Local Delicacies": false
+}

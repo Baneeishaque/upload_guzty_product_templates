@@ -1,0 +1,26 @@
+{
+  "Product name": "Vegetable Stew",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "vegetable stew can be very tasty, especially when prepared with a well-balanced combination of vegetables and a flavorful broth. The spices and seasonings used in the stew, like ginger, garlic, turmeric, and cumin, add depth and aroma to the dish.",
+  "Local Delicacies": false
+}

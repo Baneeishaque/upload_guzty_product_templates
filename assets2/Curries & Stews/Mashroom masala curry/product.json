@@ -1,0 +1,26 @@
+{
+  "Product name": "Mashroom masala curry",
+  "Price": 10,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "mushroom masala curry is known for its delicious and savory flavor. The combination of mushrooms with the rich tomato-based gravy and aromatic spices creates a tasty and satisfying dish.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,25 @@
+{
+  "product name":"Tomato Rice",
+  "Price": 0,
+  "Product Type": "Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Rice",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 120,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  "Short Description": "Type a description",
+  "Long Description": "It is a slightly spicy rice dish that is made with tomato, spices and rice. In the Tamil language, 'thakkali' means tomato and 'sadam' is rice.",
+  "Local Delicacies": false
+}

@@ -1,0 +1,26 @@
+{
+  "Product name": "chicken masala curry",
+  "Price": 10,
+  "Product Type": "Non-Veg",
+  "Sku set": "Box",
+  "GST": 5,
+  "Min count": 1,
+  "Max count": 20,
+  "Product Category": "Curries/stews",
+  "Order type": [
+    "Take away",
+    "Delivery",
+    "Dine-in"
+  ],
+  "Lead time": 25,
+  "Varients": [
+    {"varient name" : "Half",
+     "varient price" : 80},
+    {"varient name" : "Full",
+     "varient price" : 120}
+  ],
+  
+  "Short Description": "Type a description",
+  "Long Description": "chicken curry made with a homemade chicken curry masala can be incredibly tasty. The combination of roasted and ground spices in the masala adds depth, flavor, and aroma to the dish. The specific taste can vary depending on the spices used and their proportions, so you can adjust the recipe to suit your personal preferences. ",
+  "Local Delicacies": false
+}
