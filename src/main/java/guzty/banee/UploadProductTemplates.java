@@ -57,7 +57,7 @@ public class UploadProductTemplates {
 
                         for (final File fileEntry3 : Objects.requireNonNull(fileEntry2.listFiles())) {
 
-                            String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
+                            String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets2/", "");
 //                            System.out.println("filePath = " + filePath);
 
                             if (Objects.equals(categoryName, filePath.substring(0, filePath.indexOf("/")))) {
