@@ -56,7 +56,7 @@ public class CheckVendorProductOrderTypes {
 
                                 if (!orderType.equals("Dine In") && !orderType.equals("Delivery") && !orderType.equals("Take Away")) {
 
-                                    if (!orderType.equals("Take away")) {
+                                    if (!orderType.equals("Take away") && !orderType.equals("Dine-in")) {
 
                                         System.out.println("orderType = " + orderType);
                                     }
