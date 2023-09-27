@@ -5,12 +5,20 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.*;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import net.sf.jmimemagic.Magic;
+import net.sf.jmimemagic.MagicException;
+import net.sf.jmimemagic.MagicMatchNotFoundException;
+import net.sf.jmimemagic.MagicParseException;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,7 +88,7 @@ public class UploadProductTemplates {
                                     DocumentReference demoProductReference = db.collection("demoProducts").document(id);
 
                                     ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
-                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), settingsDocument.getId(), settingsDocument.getReference(), getProductTypeId(productJsonModal.getProductType(), filePath));
+                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), demoProductReference.getId(), demoProductReference, getProductTypeId(productJsonModal.getProductType(), filePath));
 
 //                                                search: setSearchParam(productJson.productName.trim()),
 
@@ -143,14 +151,14 @@ public class UploadProductTemplates {
                                     demoProductDocument.put("reference", productModal.reference);
                                     demoProductDocument.put("productTypeId", productModal.productTypeId);
 
-                                    System.out.println("demoProductDocument = " + demoProductDocument);
+//                                    System.out.println("demoProductDocument = " + demoProductDocument);
 
-//                                    ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
-//                                    System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
-//
-////                                    System.exit(0);
-//
-//                                    images.clear();
+                                    ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
+                                    System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
+
+//                                    System.exit(0);
+
+                                    images.clear();
 
                                 } else {
 
@@ -159,27 +167,27 @@ public class UploadProductTemplates {
                                         String fileName = fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
                                         System.out.println("Upload : " + fileName);
 
-//                                        LocalDateTime localDateTime = LocalDateTime.now();
-//                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + "." + FilenameUtils.getExtension(fileEntry4.getPath());
+                                        LocalDateTime localDateTime = LocalDateTime.now();
+                                        String blobString = dateTimeFormatterDate.format(localDateTime) + "/" + dateTimeFormatterTime.format(localDateTime) + "." + FilenameUtils.getExtension(fileEntry4.getPath());
+
+                                        BlobId blobId = BlobId.of("guzty-c2dc5.appspot.com", blobString);
+                                        try {
+                                            BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                                                    .setMetadata(Map.ofEntries(Map.entry("picked-file-path", fileName)))
+                                                    .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
+                                                    .build();
+                                            Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
+//                                            System.out.println("image = " + blob.getMediaLink());
+                                            images.add(blob.getMediaLink());
+
+//                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
 //
-//                                        BlobId blobId = BlobId.of("guzty-c2dc5.appspot.com", blobString);
-//                                        try {
-//                                            BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
-//                                                    .setMetadata(Map.ofEntries(Map.entry("picked-file-path", fileName)))
-//                                                    .setContentType(Magic.getMagicMatch(fileEntry4, false).getMimeType())
-//                                                    .build();
-//                                            Blob blob = storage.createFrom(blobInfo, fileEntry4.toPath(), Storage.BlobWriteOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
-////                                            System.out.println("image = " + blob.getMediaLink());
-//                                            images.add(blob.getMediaLink());
-//
-////                                            try (InputStream image = new FileInputStream(fileEntry4.getPath())) {
-////
-////                                                Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
-////                                            }
-//
-//                                        } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
-//                                            throw new RuntimeException(e);
-//                                        }
+//                                                Blob blob = storageClient.bucket("guzty-c2dc5.appspot.com").create(blobString, image, Magic.getMagicMatch(fileEntry4, false).getMimeType(), Bucket.BlobWriteOption.doesNotExist());
+//                                            }
+
+                                        } catch (MagicParseException | MagicMatchNotFoundException | MagicException e) {
+                                            throw new RuntimeException(e);
+                                        }
 //                                        System.exit(0);
                                     }
                                 }
