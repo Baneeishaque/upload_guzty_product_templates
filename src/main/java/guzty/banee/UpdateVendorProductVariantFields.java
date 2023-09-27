@@ -20,8 +20,6 @@ import java.util.concurrent.ExecutionException;
 public class UpdateVendorProductVariantFields {
     public static void main(String[] args) {
 
-        String imageUrlsText = "imageUrls";
-
         GoogleCredentials credentials;
         try {
             credentials = GoogleCredentials.getApplicationDefault();
