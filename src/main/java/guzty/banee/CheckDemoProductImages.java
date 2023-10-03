@@ -2,6 +2,7 @@ package guzty.banee;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Filter;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
@@ -18,6 +19,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class CheckDemoProductImages {
@@ -37,14 +39,15 @@ public class CheckDemoProductImages {
 
             Firestore db = FirestoreClient.getFirestore();
 
-            ApiFuture<QuerySnapshot> query = db.collection(demoProducts).get();
+            ApiFuture<QuerySnapshot> query = db.collection(demoProducts).where(Filter.equalTo("deleted", false)).get();
 
             QuerySnapshot querySnapshot = query.get();
 
             List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
             for (QueryDocumentSnapshot document : documents) {
 
-                imageUrls = (List<String>) document.getData().get(imageUrlsText);
+                Map<String, Object> data = document.getData();
+                imageUrls = (List<String>) data.get(imageUrlsText);
 //                System.out.println("imageUrls = " + imageUrls);
 
                 for (i = 0; i < imageUrls.size(); i++) {
@@ -52,7 +55,13 @@ public class CheckDemoProductImages {
                     File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
                     try {
                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
-                        System.out.println("destination = " + destination.getName());
+                        double imageSize = getFileSizeKiloBytes(destination);
+                        // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
+                        if(imageSize > 500){
+
+                            System.out.println(data.get("categoryName") + "/" + data.get("name") + ", Size = " + imageSize + " kb");
+                            // System.exit(0);
+                        }
 
                     } catch (IOException e) {
 
@@ -92,4 +101,20 @@ public class CheckDemoProductImages {
                 null, // Ignore the query part of the input url
                 uri.getFragment()).toString();
     }
+
+    private static String getFileSizeMegaBytes(File file) {
+		return (double) file.length() / (1024 * 1024) + " mb";
+	}
+	
+	private static String getFileSizeKiloBytesText(File file) {
+		return (double) file.length() / 1024 + " kb";
+	}
+
+	private static String getFileSizeBytes(File file) {
+		return file.length() + " bytes";
+	}
+
+    private static double getFileSizeKiloBytes(File file) {
+		return (double) file.length() / 1024;
+	}
 }
