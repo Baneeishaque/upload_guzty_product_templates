@@ -61,14 +61,14 @@ public class CheckDemoProductImages {
                         if (e.getLocalizedMessage().contains("401")) {
 
                             System.out.println("i = " + i + ", " + document.getId());
-                            System.out.println("imageUrls = " + imageUrls);
+                            // System.out.println("imageUrls = " + imageUrls);
 
                             imageUrls.remove(i);
-                            System.out.println("imageUrls = " + imageUrls);
+                            // System.out.println("imageUrls = " + imageUrls);
 
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put(imageUrlsText, imageUrls);
-                            System.out.println("hashMap = " + hashMap);
+                            // System.out.println("hashMap = " + hashMap);
 
                             document.getReference().update(hashMap);
 

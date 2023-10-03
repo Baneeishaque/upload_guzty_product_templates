@@ -18,8 +18,12 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         String productName = node.get("Product name") == null ? node.get("product name").asText() : node.get("Product name").asText();
+        productName = Capital(productName);
         double price = node.get("Price").asDouble();
         String productType = node.get("Product Type").asText();
+        if(productType.equals("non-veg")){
+            productType = "Non-Veg";
+        }
         String skuSet = node.get("Sku set").asText();
         double gst = node.get("GST").asDouble();
         int minimumCount = node.get("Min count").asInt();
@@ -47,6 +51,7 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
 
                 }else{
                     System.out.println("orderType = " + orderType);
+                    System.exit(1);
                 }
             }
         }
@@ -145,7 +150,28 @@ public class ProductJsonModalDeserializer extends JsonDeserializer<ProductJsonMo
                 return "GZVID1013";
             default:
                 System.out.println("No ID for " + varientName);
+                System.exit(1);
                 return "";
         }
     }
+
+    public static String Capital(String myinput) { // user-defined method
+        // store each character to a char array
+        char[] charAray = myinput.toCharArray();
+        // for loop to capitalize first letter 
+        for(int i = 0; i < charAray.length; i++) {
+           // capitalizing first letter of first word
+           charAray[0] = Character.toUpperCase(charAray[0]);
+           // loop to check if there is space between two letters
+           if(charAray[i] == ' ') {
+              // capitalizing first letter of rest of the word
+              charAray[i+1] = Character.toUpperCase(charAray[i+1]);
+           }
+        }
+        // converting the character array to the string
+        myinput = String.valueOf(charAray);
+        // to print the final result
+        // System.out.println("After capitalizing the first letter: " + myinput); 
+        return myinput;
+     }
 }

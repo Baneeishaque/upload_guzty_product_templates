@@ -54,14 +54,14 @@ public class UploadProductTemplates {
                 Map<String, Object> data = document.getData();
                 String categoryName = data.get("name").toString();
                 System.out.println("Category Name = " + categoryName);
-                File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets2");
+                File rootFolder = new File("/home/guzty_tech/upload_guzty_product_templates/assets3");
                 for (final File fileEntry : Objects.requireNonNull(rootFolder.listFiles())) {
 
                     for (final File fileEntry2 : Objects.requireNonNull(fileEntry.listFiles())) {
 
                         for (final File fileEntry3 : Objects.requireNonNull(fileEntry2.listFiles())) {
 
-                            String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets2/", "");
+                            String filePath = fileEntry3.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets3/", "");
 //                            System.out.println("filePath = " + filePath);
 
                             if (Objects.equals(categoryName, filePath.substring(0, filePath.indexOf("/")))) {
@@ -72,7 +72,7 @@ public class UploadProductTemplates {
 
                                     ObjectMapper mapper = new ObjectMapper();
                                     ProductJsonModal productJsonModal = mapper.readValue(FileUtils.readFileToString(fileEntry3, StandardCharsets.UTF_8), ProductJsonModal.class);
-//                                    System.out.println("productJsonModal = " + productJsonModal);
+                                    //System.out.println("productJsonModal = " + productJsonModal);
 
                                     ApiFuture<DocumentSnapshot> querySnapshotApiFuture = db.collection("settings").document("settings").get();
                                     DocumentSnapshot settingsDocument = querySnapshotApiFuture.get();
@@ -90,12 +90,15 @@ public class UploadProductTemplates {
                                     ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
                                     }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), demoProductReference.getId(), demoProductReference, getProductTypeId(productJsonModal.getProductType(), filePath));
 
+                                    /*ProductModel productModal = new ProductModel(LocalDateTime.now(), false, true, productJsonModal.getProductName().trim(), images, productJsonModal.getShortDescription(), productJsonModal.getLongDescription(), productJsonModal.getPrice(), productJsonModal.getLeadTime(), productJsonModal.getSkuSet(), 0, "", "", "", true, true, data.get("id").toString(), categoryName, 0, 0, 0, 0, 0, productJsonModal.getProductType().equals("Veg"), new HashMap<>(), true, productJsonModal.getOrderType(), productJsonModal.getOrderType(), productJsonModal.getMaxCount(), productJsonModal.getMinCount(), productJsonModal.getGst(), new ArrayList<>() {
+                                    }, new ArrayList<>(), 0, 0, productJsonModal.getLocalDelicacies(), false, productJsonModal.getVarients(), settingsDocument.getId(), settingsDocument.getReference(), getProductTypeId(productJsonModal.getProductType(), filePath));*/
+
 //                                                search: setSearchParam(productJson.productName.trim()),
 
-//                                        System.out.println("productModal = " + productModal);
+                                    //System.out.println("productModal = " + productModal);
 
-                                    ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-//                                        System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));
+                                    /*ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+                                    System.out.println("productModal JSON = " + ow.writeValueAsString(productModal));*/
 
                                     Map<String, Object> demoProductDocument = new HashMap<>();
                                     demoProductDocument.put("createdTime", FieldValue.serverTimestamp());
@@ -151,7 +154,7 @@ public class UploadProductTemplates {
                                     demoProductDocument.put("reference", productModal.reference);
                                     demoProductDocument.put("productTypeId", productModal.productTypeId);
 
-//                                    System.out.println("demoProductDocument = " + demoProductDocument);
+                                    //System.out.println("demoProductDocument = " + demoProductDocument);
 
                                     ApiFuture<WriteResult> writeResultApiFuture = db.collection("demoProducts").document(id).set(demoProductDocument);
                                     System.out.println("Update time : " + writeResultApiFuture.get().getUpdateTime());
@@ -164,7 +167,7 @@ public class UploadProductTemplates {
 
                                     for (final File fileEntry4 : Objects.requireNonNull(fileEntry3.listFiles())) {
 
-                                        String fileName = fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets/", "");
+                                        String fileName = fileEntry4.getPath().replaceFirst("/home/guzty_tech/upload_guzty_product_templates/assets3/", "");
                                         System.out.println("Upload : " + fileName);
 
                                         LocalDateTime localDateTime = LocalDateTime.now();
@@ -205,12 +208,15 @@ public class UploadProductTemplates {
         switch (productType.toLowerCase().replaceAll(" ", "")) {
             case "non-veg":
                 return "PDT1001";
+            case "Non-Veg":
+                return "PDT1001";
             case "veg":
                 return "PDT1002";
             case "diary":
                 return "PDT1003";
             default: {
                 System.out.println("Product Type Not Exist for" + productType + " in " + filePath);
+                System.exit(1);
                 return "";
             }
         }
