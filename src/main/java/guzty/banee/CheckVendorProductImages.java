@@ -81,7 +81,7 @@ public class CheckVendorProductImages {
                                             hashMap.put(imageUrlsText, imageUrls);
                                             productDocument.getReference().update(hashMap);
 
-                                            System.exit(0);
+                                            // System.exit(0);
                                         }
                                     } catch (IOException e) {
 
