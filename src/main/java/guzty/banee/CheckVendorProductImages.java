@@ -77,8 +77,8 @@ public class CheckVendorProductImages {
                                         // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
                                         if(imageSize > 500){
 
-                                            System.out.println("[" + vendorDocument.getId() + "] [" + productDocument.getId() + "] " + data.get("name") + ", [" + i + "] Size = " + imageSize + " kb");
-                                            // System.exit(0);
+                                            System.out.println("[" + vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "] [" + data.get("name") + " - " + productDocument.getId() + "] " + ", [Image " + i + "] Size = " + imageSize + " kb");
+                                             System.exit(0);
                                         }
                                     } catch (IOException e) {
 
