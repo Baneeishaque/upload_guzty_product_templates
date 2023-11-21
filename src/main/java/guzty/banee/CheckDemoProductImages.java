@@ -59,7 +59,7 @@ public class CheckDemoProductImages {
                         // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
                         if(imageSize > 500){
 
-                            System.out.println(data.get("categoryName") + "/" + data.get("name") + ", Size = " + imageSize + " kb");
+                            System.out.println(data.get("categoryName") + "/" + data.get("name") + " [" + document.getId() + "], Size = " + imageSize + " kb, [" + i + "]");
                             // System.exit(0);
                         }
 
