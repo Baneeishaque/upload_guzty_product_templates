@@ -72,10 +72,16 @@ public class CheckVendorProductImages {
                                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
                                         double imageSize = getFileSizeKiloBytes(destination);
                                         // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
-                                        if(imageSize > 500){
+                                        if (imageSize > 500) {
 
                                             System.out.println("[" + vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "] [" + data.get("name") + " - " + productDocument.getId() + "] " + "[Image " + i + "] Size = " + imageSize + " kb");
-                                             System.exit(0);
+
+                                            imageUrls.remove(i);
+                                            HashMap<String, Object> hashMap = new HashMap<>();
+                                            hashMap.put(imageUrlsText, imageUrls);
+                                            productDocument.getReference().update(hashMap);
+
+                                            System.exit(0);
                                         }
                                     } catch (IOException e) {
 
