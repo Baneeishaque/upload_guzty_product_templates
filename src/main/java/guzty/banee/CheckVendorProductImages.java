@@ -67,14 +67,14 @@ public class CheckVendorProductImages {
 
                                 for (int i = 0; i < imageUrls.size(); i++) {
 
-                                    File destination = new File(vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "/" + data.get("name") + " - " + productDocument.getId() + "/" + i + ".jpg");
+                                    File destination = new File("OverSizedImages/" + vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "/" + data.get("name") + " - " + productDocument.getId() + "/" + i + ".jpg");
                                     try {
                                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
                                         double imageSize = getFileSizeKiloBytes(destination);
                                         // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
                                         if(imageSize > 500){
 
-                                            System.out.println("[" + vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "] [" + data.get("name") + " - " + productDocument.getId() + "] " + ", [Image " + i + "] Size = " + imageSize + " kb");
+                                            System.out.println("[" + vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "] [" + data.get("name") + " - " + productDocument.getId() + "] " + "[Image " + i + "] Size = " + imageSize + " kb");
                                              System.exit(0);
                                         }
                                     } catch (IOException e) {
