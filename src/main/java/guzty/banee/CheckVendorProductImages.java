@@ -10,18 +10,15 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static guzty.banee.CheckDemoProductImages.getUrlWithoutParameters;
 import static guzty.banee.CheckDemoProductImages.getFileSizeKiloBytes;
 
 public class CheckVendorProductImages {
@@ -51,7 +48,7 @@ public class CheckVendorProductImages {
                 for (CollectionReference subCollection : collections) {
 
                     String subCollectionName = subCollection.getId();
-//                    System.out.println("Found sub collection with id: " + subCollectionName);
+//                    System.out.println("Found collection with id: " + subCollectionName);
 
                     if (subCollectionName.equals("products")) {
 
@@ -70,7 +67,7 @@ public class CheckVendorProductImages {
 
                                 for (int i = 0; i < imageUrls.size(); i++) {
 
-                                    File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
+                                    File destination = new File(vendorDocument.getData().get("shopName") + " - " + vendorDocument.getId() + "/" + data.get("name") + " - " + productDocument.getId() + "/" + i + ".jpg");
                                     try {
                                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
                                         double imageSize = getFileSizeKiloBytes(destination);
@@ -104,7 +101,7 @@ public class CheckVendorProductImages {
                                     }
                                 }
                             }
-                        } catch (InterruptedException | ExecutionException | URISyntaxException e) {
+                        } catch (InterruptedException | ExecutionException e) {
 
                             throw new RuntimeException(e);
                         }
