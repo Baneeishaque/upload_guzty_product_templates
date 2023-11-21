@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static guzty.banee.CheckDemoProductImages.getUrlWithoutParameters;
+import static guzty.banee.CheckDemoProductImages.getFileSizeKiloBytes;
 
 public class CheckVendorProductImages {
     public static void main(String[] args) {
@@ -61,7 +62,9 @@ public class CheckVendorProductImages {
 
                             for (QueryDocumentSnapshot productDocument : productDocuments) {
 
-                                List<String> imageUrls = (List<String>) productDocument.getData().get(imageUrlsText);
+                                Map<String, Object> data = productDocument.getData();
+
+                                List<String> imageUrls = (List<String>) data.get(imageUrlsText);
 //                                System.out.println("imageUrls = " + imageUrls);
 
                                 for (int i = 0; i < imageUrls.size(); i++) {
@@ -69,8 +72,13 @@ public class CheckVendorProductImages {
                                     File destination = new File(FilenameUtils.getName(getUrlWithoutParameters(imageUrls.get(i))));
                                     try {
                                         FileUtils.copyURLToFile(new URL(imageUrls.get(i)), destination);
-//                                        System.out.println("destination = " + destination.getName());
+                                        double imageSize = getFileSizeKiloBytes(destination);
+                                        // System.out.println("destination = " + destination.getName() + ", Size = " + imageSize + " kb");
+                                        if(imageSize > 500){
 
+                                            System.out.println(data.get("categoryName") + "/" + data.get("name") + " [" + productDocument.getId() + "], Size = " + imageSize + " kb, [" + i + "]");
+                                            // System.exit(0);
+                                        }
                                     } catch (IOException e) {
 
                                         System.out.println("exception = " + e);

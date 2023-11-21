@@ -105,7 +105,7 @@ public class CheckDemoProductImages {
     private static String getFileSizeMegaBytes(File file) {
 		return (double) file.length() / (1024 * 1024) + " mb";
 	}
-	
+
 	private static String getFileSizeKiloBytesText(File file) {
 		return (double) file.length() / 1024 + " kb";
 	}
@@ -114,7 +114,7 @@ public class CheckDemoProductImages {
 		return file.length() + " bytes";
 	}
 
-    private static double getFileSizeKiloBytes(File file) {
+    public static double getFileSizeKiloBytes(File file) {
 		return (double) file.length() / 1024;
 	}
 }
